@@ -1,0 +1,6 @@
+# Digital Mars IDDE gen.  .dpd file. V: 7200
+max19x.obj: \
+	max19x.cpp \
+	MAX19X.HPP \
+	vsm.hpp \
+	DEVKEYS.HPP 
