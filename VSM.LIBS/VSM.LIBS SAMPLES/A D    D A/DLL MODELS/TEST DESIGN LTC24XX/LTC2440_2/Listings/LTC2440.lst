@@ -1,0 +1,415 @@
+C51 COMPILER V7.08   LTC2440                                                               12/07/2003 21:05:08 PAGE 1   
+
+
+C51 COMPILER V7.08, COMPILATION OF MODULE LTC2440
+OBJECT MODULE PLACED IN .\Object\LTC2440.obj
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE LTC2440.c BROWSE NOINTPROMOTE DEBUG OBJECTEXTEND CODE SYMBOLS PRINT(.\Listi
+                    -ngs\LTC2440.lst) OBJECT(.\Object\LTC2440.obj)
+
+line level    source
+
+   1          #include <REG52.H>
+   2          #include <stdio.h>
+   3          #include "Ltc2440_driver.h"
+   4          #include "LTC2440_driver_var.h"
+   5          #include "lcd_lib.h"
+   6          
+   7          #define VREF   1                        // change here vref value as for schematic
+   8          #define RANGE  0x20000000           // (1<<numbits) where numbits = 29
+   9          #define MAXAVR 5                            // number of averages
+  10          
+  11          /////////////////////////
+  12          // Simple application.
+  13          void main (void)
+  14          {
+  15   1              unsigned char cdata[4]={0,0,0,0};
+  16   1              unsigned char status;
+  17   1              unsigned long conv = 0;
+  18   1              unsigned char buf[14];
+  19   1              unsigned char na = 0;
+  20   1      
+  21   1              float reads = 0;
+  22   1              float avr = 0;
+  23   1      
+  24   1              /////////////////////////////////////////////////////////////////////
+  25   1      
+  26   1              // Initialize lcd 
+  27   1              init_lcd();
+  28   1              // Initialize LTC2440
+  29   1              init_ad();
+  30   1      
+  31   1              // Turn off blinking cursor
+  32   1              control (BLINK_OFF_CURSOR_OFF);
+  33   1      
+  34   1              // Clean lcd screen
+  35   1              clr_lcd();
+  36   1      
+  37   1              // Display first message
+  38   1              wrstr_lcd ("    LTC2440 TEST");
+  39   1              locate_lcd(1, 0);
+  40   1              wrstr_lcd (" DIGITAL VOLTMETER ");
+  41   1              delay (30000);
+  42   1              clr_lcd();
+  43   1      
+  44   1              // Screen template 
+  45   1              locate_lcd(0, 0);
+  46   1              wrstr_lcd ("INPUT: ");
+  47   1      
+  48   1              while (1) 
+  49   1              {
+  50   2                      if (LTC2440_eoc() == IDLE) { 
+  51   3                              delay(300);
+  52   3                      }                       
+  53   2                      else {
+  54   3                              // Get status and raw conversion from ADC
+C51 COMPILER V7.08   LTC2440                                                               12/07/2003 21:05:08 PAGE 2   
+
+  55   3                              status = LTC2440_rd(&cdata) ;                                   
+  56   3                              conv = LTC2440_get_value (&cdata); 
+  57   3      
+  58   3                              // Test if Over or Under flow 
+  59   3                              if (status == ADOVF)                    
+  60   3                                      sprintf (buf, "%s    ", "+++ OVL +++ ");                        
+  61   3                              else if (status == ADUNF)
+  62   3                                      sprintf (buf, "%s    ", "--- UNF --- ");                        
+  63   3                              else {
+  64   4                                      // If readings are valid convert in signed floating number
+  65   4                                      if (status == (ADRDY | ADOVF))  
+  66   4                                              reads = (float) (conv * VREF) / RANGE ;                 
+  67   4                                      else if (status == (ADRDY | ADUNF)) 
+  68   4                                              reads = (float) (conv * VREF) / RANGE - VREF ;          
+  69   4                                      // Add averages
+  70   4                                      if (na++ < MAXAVR) 
+  71   4                                              avr += reads; 
+  72   4                                      else {
+  73   5                                      // Display averaged value
+  74   5                                              sprintf (buf, "%+1.7f V", avr/(na-1));                  
+  75   5                                              na = 0;
+  76   5                                              avr = 0;
+  77   5                                      }
+  78   4                              }
+  79   3                      }       
+  80   2                      // display value in the right position.
+  81   2                      locate_lcd(0, 7);
+  82   2                      wrstr_lcd (buf);                                                
+  83   2              }
+  84   1      }
+  85          
+C51 COMPILER V7.08   LTC2440                                                               12/07/2003 21:05:08 PAGE 3   
+
+ASSEMBLY LISTING OF GENERATED OBJECT CODE
+
+
+             ; FUNCTION main (BEGIN)
+                                           ; SOURCE LINE # 13
+                                           ; SOURCE LINE # 14
+                                           ; SOURCE LINE # 15
+0000 7800        R     MOV     R0,#LOW cdata
+0002 7C00        R     MOV     R4,#HIGH cdata
+0004 7D00              MOV     R5,#00H
+0006 7BFF              MOV     R3,#0FFH
+0008 7A00        R     MOV     R2,#HIGH _?ix1000
+000A 7900        R     MOV     R1,#LOW _?ix1000
+000C 7E00              MOV     R6,#00H
+000E 7F04              MOV     R7,#04H
+0010 120000      E     LCALL   ?C?COPY
+                                           ; SOURCE LINE # 17
+0013 E4                CLR     A
+0014 F500        R     MOV     conv+03H,A
+0016 F500        R     MOV     conv+02H,A
+0018 F500        R     MOV     conv+01H,A
+001A F500        R     MOV     conv,A
+                                           ; SOURCE LINE # 19
+001C F500        R     MOV     na,A
+                                           ; SOURCE LINE # 21
+001E F500        R     MOV     reads+03H,A
+0020 F500        R     MOV     reads+02H,A
+0022 F500        R     MOV     reads+01H,A
+0024 F500        R     MOV     reads,A
+                                           ; SOURCE LINE # 22
+0026 F500        R     MOV     avr+03H,A
+0028 F500        R     MOV     avr+02H,A
+002A F500        R     MOV     avr+01H,A
+002C F500        R     MOV     avr,A
+                                           ; SOURCE LINE # 27
+002E 120000      E     LCALL   init_lcd
+                                           ; SOURCE LINE # 29
+0031 120000      E     LCALL   init_ad
+                                           ; SOURCE LINE # 32
+0034 7F0C              MOV     R7,#0CH
+0036 120000      E     LCALL   _control
+                                           ; SOURCE LINE # 35
+0039 120000      E     LCALL   clr_lcd
+                                           ; SOURCE LINE # 38
+003C 7BFF              MOV     R3,#0FFH
+003E 7A00        R     MOV     R2,#HIGH ?SC_0
+0040 7900        R     MOV     R1,#LOW ?SC_0
+0042 120000      E     LCALL   _wrstr_lcd
+                                           ; SOURCE LINE # 39
+0045 E4                CLR     A
+0046 FD                MOV     R5,A
+0047 7F01              MOV     R7,#01H
+0049 120000      E     LCALL   _locate_lcd
+                                           ; SOURCE LINE # 40
+004C 7BFF              MOV     R3,#0FFH
+004E 7A00        R     MOV     R2,#HIGH ?SC_17
+0050 7900        R     MOV     R1,#LOW ?SC_17
+0052 120000      E     LCALL   _wrstr_lcd
+                                           ; SOURCE LINE # 41
+0055 7F30              MOV     R7,#030H
+0057 7E75              MOV     R6,#075H
+0059 7D00              MOV     R5,#00H
+C51 COMPILER V7.08   LTC2440                                                               12/07/2003 21:05:08 PAGE 4   
+
+005B 7C00              MOV     R4,#00H
+005D 120000      E     LCALL   _delay
+                                           ; SOURCE LINE # 42
+0060 120000      E     LCALL   clr_lcd
+                                           ; SOURCE LINE # 45
+0063 E4                CLR     A
+0064 FD                MOV     R5,A
+0065 FF                MOV     R7,A
+0066 120000      E     LCALL   _locate_lcd
+                                           ; SOURCE LINE # 46
+0069 7BFF              MOV     R3,#0FFH
+006B 7A00        R     MOV     R2,#HIGH ?SC_37
+006D 7900        R     MOV     R1,#LOW ?SC_37
+006F 120000      E     LCALL   _wrstr_lcd
+0072         ?C0001:
+                                           ; SOURCE LINE # 48
+                                           ; SOURCE LINE # 49
+                                           ; SOURCE LINE # 50
+0072 120000      E     LCALL   LTC2440_eoc
+0075 400E              JC      ?C0003
+                                           ; SOURCE LINE # 51
+0077 7F2C              MOV     R7,#02CH
+0079 7E01              MOV     R6,#01H
+007B 7D00              MOV     R5,#00H
+007D 7C00              MOV     R4,#00H
+007F 120000      E     LCALL   _delay
+                                           ; SOURCE LINE # 52
+0082 020000      R     LJMP    ?C0004
+0085         ?C0003:
+                                           ; SOURCE LINE # 53
+                                           ; SOURCE LINE # 55
+0085 7B00              MOV     R3,#00H
+0087 7A00        R     MOV     R2,#HIGH cdata
+0089 7900        R     MOV     R1,#LOW cdata
+008B 120000      E     LCALL   _LTC2440_rd
+008E 8F00        R     MOV     status,R7
+                                           ; SOURCE LINE # 56
+0090 7B00              MOV     R3,#00H
+0092 7A00        R     MOV     R2,#HIGH cdata
+0094 7900        R     MOV     R1,#LOW cdata
+0096 120000      E     LCALL   _LTC2440_get_value
+0099 8F00        R     MOV     conv+03H,R7
+009B 8E00        R     MOV     conv+02H,R6
+009D 8D00        R     MOV     conv+01H,R5
+009F 8C00        R     MOV     conv,R4
+                                           ; SOURCE LINE # 59
+00A1 E500        R     MOV     A,status
+00A3 B42014            CJNE    A,#020H,?C0005
+                                           ; SOURCE LINE # 60
+00A6 7500FF      E     MOV     ?_sprintf?BYTE+03H,#0FFH
+00A9 750000      R     MOV     ?_sprintf?BYTE+04H,#HIGH ?SC_45
+00AC 750000      R     MOV     ?_sprintf?BYTE+05H,#LOW ?SC_45
+00AF 7500FF      E     MOV     ?_sprintf?BYTE+06H,#0FFH
+00B2 750000      R     MOV     ?_sprintf?BYTE+07H,#HIGH ?SC_52
+00B5 750000      R     MOV     ?_sprintf?BYTE+08H,#LOW ?SC_52
+00B8 8017              SJMP    ?C0015
+00BA         ?C0005:
+                                           ; SOURCE LINE # 61
+00BA E500        R     MOV     A,status
+00BC B4401E            CJNE    A,#040H,?C0007
+                                           ; SOURCE LINE # 62
+00BF 7500FF      E     MOV     ?_sprintf?BYTE+03H,#0FFH
+C51 COMPILER V7.08   LTC2440                                                               12/07/2003 21:05:08 PAGE 5   
+
+00C2 750000      R     MOV     ?_sprintf?BYTE+04H,#HIGH ?SC_45
+00C5 750000      R     MOV     ?_sprintf?BYTE+05H,#LOW ?SC_45
+00C8 7500FF      E     MOV     ?_sprintf?BYTE+06H,#0FFH
+00CB 750000      R     MOV     ?_sprintf?BYTE+07H,#HIGH ?SC_65
+00CE 750000      R     MOV     ?_sprintf?BYTE+08H,#LOW ?SC_65
+00D1         ?C0015:
+00D1 7B00              MOV     R3,#00H
+00D3 7A00        R     MOV     R2,#HIGH buf
+00D5 7900        R     MOV     R1,#LOW buf
+00D7 120000      E     LCALL   _sprintf
+00DA 020000      R     LJMP    ?C0004
+00DD         ?C0007:
+                                           ; SOURCE LINE # 63
+                                           ; SOURCE LINE # 65
+00DD E500        R     MOV     A,status
+00DF B43017            CJNE    A,#030H,?C0009
+                                           ; SOURCE LINE # 66
+00E2 AF00        R     MOV     R7,conv+03H
+00E4 AE00        R     MOV     R6,conv+02H
+00E6 AD00        R     MOV     R5,conv+01H
+00E8 AC00        R     MOV     R4,conv
+00EA E4                CLR     A
+00EB 120000      E     LCALL   ?C?FCASTL
+00EE E4                CLR     A
+00EF FB                MOV     R3,A
+00F0 FA                MOV     R2,A
+00F1 F9                MOV     R1,A
+00F2 784E              MOV     R0,#04EH
+00F4 120000      E     LCALL   ?C?FPDIV
+00F7 8024              SJMP    ?C0016
+00F9         ?C0009:
+                                           ; SOURCE LINE # 67
+00F9 E500        R     MOV     A,status
+00FB B45027            CJNE    A,#050H,?C0010
+                                           ; SOURCE LINE # 68
+00FE AF00        R     MOV     R7,conv+03H
+0100 AE00        R     MOV     R6,conv+02H
+0102 AD00        R     MOV     R5,conv+01H
+0104 AC00        R     MOV     R4,conv
+0106 E4                CLR     A
+0107 120000      E     LCALL   ?C?FCASTL
+010A E4                CLR     A
+010B FB                MOV     R3,A
+010C FA                MOV     R2,A
+010D F9                MOV     R1,A
+010E 784E              MOV     R0,#04EH
+0110 120000      E     LCALL   ?C?FPDIV
+0113 E4                CLR     A
+0114 FB                MOV     R3,A
+0115 FA                MOV     R2,A
+0116 7980              MOV     R1,#080H
+0118 78BF              MOV     R0,#0BFH
+011A 120000      E     LCALL   ?C?FPADD
+011D         ?C0016:
+011D 8F00        R     MOV     reads+03H,R7
+011F 8E00        R     MOV     reads+02H,R6
+0121 8D00        R     MOV     reads+01H,R5
+0123 8C00        R     MOV     reads,R4
+0125         ?C0010:
+                                           ; SOURCE LINE # 70
+0125 AF00        R     MOV     R7,na
+0127 0500        R     INC     na
+C51 COMPILER V7.08   LTC2440                                                               12/07/2003 21:05:08 PAGE 6   
+
+0129 EF                MOV     A,R7
+012A C3                CLR     C
+012B 9405              SUBB    A,#05H
+012D 501D              JNC     ?C0012
+                                           ; SOURCE LINE # 71
+012F AF00        R     MOV     R7,avr+03H
+0131 AE00        R     MOV     R6,avr+02H
+0133 AD00        R     MOV     R5,avr+01H
+0135 AC00        R     MOV     R4,avr
+0137 AB00        R     MOV     R3,reads+03H
+0139 AA00        R     MOV     R2,reads+02H
+013B A900        R     MOV     R1,reads+01H
+013D A800        R     MOV     R0,reads
+013F 120000      E     LCALL   ?C?FPADD
+0142 8F00        R     MOV     avr+03H,R7
+0144 8E00        R     MOV     avr+02H,R6
+0146 8D00        R     MOV     avr+01H,R5
+0148 8C00        R     MOV     avr,R4
+014A 8040              SJMP    ?C0004
+014C         ?C0012:
+                                           ; SOURCE LINE # 72
+                                           ; SOURCE LINE # 74
+014C 7500FF      E     MOV     ?_sprintf?BYTE+03H,#0FFH
+014F 750000      R     MOV     ?_sprintf?BYTE+04H,#HIGH ?SC_78
+0152 750000      R     MOV     ?_sprintf?BYTE+05H,#LOW ?SC_78
+0155 E500        R     MOV     A,na
+0157 14                DEC     A
+0158 FC                MOV     R4,A
+0159 E4                CLR     A
+015A 120000      E     LCALL   ?C?FCASTC
+015D A804              MOV     R0,AR4
+015F A905              MOV     R1,AR5
+0161 AA06              MOV     R2,AR6
+0163 AB07              MOV     R3,AR7
+0165 AF00        R     MOV     R7,avr+03H
+0167 AE00        R     MOV     R6,avr+02H
+0169 AD00        R     MOV     R5,avr+01H
+016B AC00        R     MOV     R4,avr
+016D 120000      E     LCALL   ?C?FPDIV
+0170 8F00        E     MOV     ?_sprintf?BYTE+09H,R7
+0172 8E00        E     MOV     ?_sprintf?BYTE+08H,R6
+0174 8D00        E     MOV     ?_sprintf?BYTE+07H,R5
+0176 8C00        E     MOV     ?_sprintf?BYTE+06H,R4
+0178 7B00              MOV     R3,#00H
+017A 7A00        R     MOV     R2,#HIGH buf
+017C 7900        R     MOV     R1,#LOW buf
+017E 120000      E     LCALL   _sprintf
+                                           ; SOURCE LINE # 75
+0181 E4                CLR     A
+0182 F500        R     MOV     na,A
+                                           ; SOURCE LINE # 76
+0184 F500        R     MOV     avr+03H,A
+0186 F500        R     MOV     avr+02H,A
+0188 F500        R     MOV     avr+01H,A
+018A F500        R     MOV     avr,A
+                                           ; SOURCE LINE # 77
+                                           ; SOURCE LINE # 78
+                                           ; SOURCE LINE # 79
+018C         ?C0004:
+                                           ; SOURCE LINE # 81
+018C 7D07              MOV     R5,#07H
+018E E4                CLR     A
+C51 COMPILER V7.08   LTC2440                                                               12/07/2003 21:05:08 PAGE 7   
+
+018F FF                MOV     R7,A
+0190 120000      E     LCALL   _locate_lcd
+                                           ; SOURCE LINE # 82
+0193 7B00              MOV     R3,#00H
+0195 7A00        R     MOV     R2,#HIGH buf
+0197 7900        R     MOV     R1,#LOW buf
+0199 120000      E     LCALL   _wrstr_lcd
+                                           ; SOURCE LINE # 83
+019C 020000      R     LJMP    ?C0001
+             ; FUNCTION main (END)
+
+C51 COMPILER V7.08   LTC2440                                                               12/07/2003 21:05:08 PAGE 8   
+
+NAME                                    CLASS   MSPACE  TYPE    OFFSET  SIZE
+====                                    =====   ======  ====    ======  ====
+
+
+P1 . . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   0090H  1
+P3 . . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   00B0H  1
+IE . . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   00A8H  1
+size_t . . . . . . . . . . . . . . . .  TYPEDEF  -----  U_INT    -----  2
+IP . . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   00B8H  1
+main . . . . . . . . . . . . . . . . .  PUBLIC   CODE   PROC     0000H  -----
+  cdata. . . . . . . . . . . . . . . .  AUTO     DATA   ARRAY    0000H  4
+  status . . . . . . . . . . . . . . .  AUTO     DATA   U_CHAR   0004H  1
+  conv . . . . . . . . . . . . . . . .  AUTO     DATA   U_LONG   0005H  4
+  buf. . . . . . . . . . . . . . . . .  AUTO     DATA   ARRAY    0009H  14
+  na . . . . . . . . . . . . . . . . .  AUTO     DATA   U_CHAR   0017H  1
+  reads. . . . . . . . . . . . . . . .  AUTO     DATA   FLOAT    0018H  4
+  avr. . . . . . . . . . . . . . . . .  AUTO     DATA   FLOAT    001CH  4
+_LTC2440_get_value . . . . . . . . . .  EXTERN   CODE   PROC     -----  -----
+SCON . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   0098H  1
+TCON . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   0088H  1
+_wrstr_lcd . . . . . . . . . . . . . .  EXTERN   CODE   PROC     -----  -----
+_?ix1000 . . . . . . . . . . . . . . .  STATIC   CODE   ARRAY    0057H  4
+_LTC2440_rd. . . . . . . . . . . . . .  EXTERN   CODE   PROC     -----  -----
+LTC2440_eoc. . . . . . . . . . . . . .  EXTERN   CODE   PROC     -----  -----
+init_lcd . . . . . . . . . . . . . . .  EXTERN   CODE   PROC     -----  -----
+clr_lcd. . . . . . . . . . . . . . . .  EXTERN   CODE   PROC     -----  -----
+init_ad. . . . . . . . . . . . . . . .  EXTERN   CODE   PROC     -----  -----
+_control . . . . . . . . . . . . . . .  EXTERN   CODE   PROC     -----  -----
+T2CON. . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   00C8H  1
+_sprintf . . . . . . . . . . . . . . .  EXTERN   CODE   PROC     -----  -----
+_locate_lcd. . . . . . . . . . . . . .  EXTERN   CODE   PROC     -----  -----
+_delay . . . . . . . . . . . . . . . .  EXTERN   CODE   PROC     -----  -----
+PSW. . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   00D0H  1
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    415    ----
+   CONSTANT SIZE    =     91    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----      32
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

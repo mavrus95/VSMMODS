@@ -1,0 +1,381 @@
+C51 COMPILER V7.08   LCD_LIB                                                               12/06/2003 01:45:54 PAGE 1   
+
+
+C51 COMPILER V7.08, COMPILATION OF MODULE LCD_LIB
+OBJECT MODULE PLACED IN .\Object\LCD_lib.obj
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE LCD_lib.c BROWSE NOINTPROMOTE DEBUG OBJECTEXTEND CODE SYMBOLS PRINT(.\Listi
+                    -ngs\LCD_lib.lst) OBJECT(.\Object\LCD_lib.obj)
+
+line level    source
+
+   1          #include <reg52.h>
+   2          #include "lcd_lib.h"
+   3          #include "8051_lcd.h"
+   4          
+   5          ////////////////////////////////////////////////////////////////////////////////
+   6          // This routine generates a delay. Clock depending
+   7          void delay(unsigned long dly) 
+   8          { 
+   9   1              while (--dly > 0);
+  10   1      }
+  11          
+  12          ////////////////////////////////////////////////////////////////////////////////
+  13          // Read Busy flag is D7, must be masked with 0x80
+  14          char busy_lcd() 
+  15          { 
+  16   1              return(rdctl_lcd & 0x80);       
+  17   1      } 
+  18          
+  19          ////////////////////////////////////////////////////////////////////////////////
+  20          // Initialize LCD display
+  21          void init_lcd() 
+  22          {       
+  23   1              wrctl_lcd = 0x30;                                       // write control for the firt time on power up 
+  24   1              delay(100);                                             // execute delay 4.1 ms or more, 
+  25   1      
+  26   1              wrctl_lcd = 0x30;                                       // same before, the second 
+  27   1              delay(100); 
+  28   1      
+  29   1              wrctl_lcd = 0x30;                                       // one more time, without delay 
+  30   1              delay(100); 
+  31   1              wrctl_lcd = 0x38;                                       // function set to 8bit length interface 
+  32   1      
+  33   1              while(busy_lcd());                                      // now, busy flag can read for cek busy lcd 
+  34   1              
+  35   1              wrctl_lcd = BLINK_ON_CURSOR_OFF;        // set blink on and cursor off.  
+  36   1                                                                      
+  37   1              while(busy_lcd());                                      // now, busy flag can read for ce busy lcd 
+  38   1              wrctl_lcd = CLEAR;                                      // clear lcd. 
+  39   1              while(busy_lcd());                                      // now, busy flag can read for ce busy lcd. 
+  40   1      } 
+  41          
+  42          ////////////////////////////////////////////////////////////////////////////////
+  43          // Locate cursor to row,col for write read char in lcd 
+  44          // Row and char start at 0. i.e. locate_lcd(0,0) is row 1 and col 1 
+  45          void locate_lcd(char row, char col) 
+  46          { 
+  47   1              char d; 
+  48   1              switch(row) 
+  49   1              { 
+  50   2                      case 0: d = LINE_1;     // set to DD_RAM start address for line_1 
+  51   2                      break; 
+  52   2                      case 1: d = LINE_2;     // set to DD_RAM start address for line_2 
+  53   2                      break; 
+  54   2                      case 2: d = LINE_3;     // set to DD_RAM start address for line_3 
+C51 COMPILER V7.08   LCD_LIB                                                               12/06/2003 01:45:54 PAGE 2   
+
+  55   2                      break; 
+  56   2                      case 3: d = LINE_4;     // set to DD_RAM start address for line_4 
+  57   2                      break; 
+  58   2              } 
+  59   1              wrctl_lcd=(d += col); 
+  60   1              while(busy_lcd()); 
+  61   1      } 
+  62          
+  63          ////////////////////////////////////////////////////////////////////////////////
+  64          // This routine send string in idata, data, pdata, cdata or cdata ending by NULL 
+  65          // as the address is generic pointer *ptrbuff 
+  66          // Pointer aotumatically contain pointer for memory type that you pass to 
+  67          // this routine 
+  68          void wrstr_lcd(char *ptrbuff) 
+  69          { 
+  70   1              char d; 
+  71   1              while((d=*ptrbuff++) != 0) 
+  72   1              { 
+  73   2                      wrdata_lcd = d; 
+  74   2                      while(busy_lcd()); 
+  75   2              } 
+  76   1      }
+  77          
+  78          ////////////////////////////////////////////////////////////////////////////////
+  79          // Clear display
+  80          void clr_lcd()  
+  81          {       
+  82   1              wrctl_lcd = CLEAR; 
+  83   1              while(busy_lcd());
+  84   1      }
+  85          
+  86          ////////////////////////////////////////////////////////////////////////////////
+  87          // Send control code
+  88          void control(char cntrl)        
+  89          {       
+  90   1              wrctl_lcd = cntrl; 
+  91   1              while(busy_lcd());
+  92   1      }
+  93                  
+C51 COMPILER V7.08   LCD_LIB                                                               12/06/2003 01:45:54 PAGE 3   
+
+ASSEMBLY LISTING OF GENERATED OBJECT CODE
+
+
+             ; FUNCTION L?0032 (BEGIN)
+0000         L?0033:
+0000 900000            MOV     DPTR,#wrctl_lcd
+0003 7430              MOV     A,#030H
+0005 F0                MOVX    @DPTR,A
+0006 7F64              MOV     R7,#064H
+0008 7E00              MOV     R6,#00H
+000A 7D00              MOV     R5,#00H
+000C 7C00              MOV     R4,#00H
+             ; FUNCTION _delay (BEGIN)
+                                           ; SOURCE LINE # 7
+000E 8F00        R     MOV     dly+03H,R7
+0010 8E00        R     MOV     dly+02H,R6
+0012 8D00        R     MOV     dly+01H,R5
+0014 8C00        R     MOV     dly,R4
+                                           ; SOURCE LINE # 8
+0016         ?C0001:
+                                           ; SOURCE LINE # 9
+0016 7800        R     MOV     R0,#LOW dly
+0018 74FF              MOV     A,#0FFH
+001A 120000      E     LCALL   ?C?LILDIDATA8
+001D E4                CLR     A
+001E FB                MOV     R3,A
+001F FA                MOV     R2,A
+0020 F9                MOV     R1,A
+0021 F8                MOV     R0,A
+0022 C3                CLR     C
+0023 120000      E     LCALL   ?C?ULCMP
+0026 40EE              JC      ?C0001
+                                           ; SOURCE LINE # 10
+0028         ?C0003:
+0028 22                RET     
+             ; FUNCTION _delay (END)
+
+             ; FUNCTION busy_lcd (BEGIN)
+                                           ; SOURCE LINE # 14
+                                           ; SOURCE LINE # 15
+                                           ; SOURCE LINE # 16
+0000 900200            MOV     DPTR,#rdctl_lcd
+0003 E0                MOVX    A,@DPTR
+0004 5480              ANL     A,#080H
+0006 FF                MOV     R7,A
+                                           ; SOURCE LINE # 17
+0007         ?C0004:
+0007 22                RET     
+             ; FUNCTION busy_lcd (END)
+
+             ; FUNCTION init_lcd (BEGIN)
+                                           ; SOURCE LINE # 21
+                                           ; SOURCE LINE # 22
+                                           ; SOURCE LINE # 23
+                                           ; SOURCE LINE # 24
+0000 120000      R     LCALL   L?0032
+                                           ; SOURCE LINE # 26
+                                           ; SOURCE LINE # 27
+0003 120000      R     LCALL   L?0032
+                                           ; SOURCE LINE # 29
+                                           ; SOURCE LINE # 30
+0006 120000      R     LCALL   L?0033
+C51 COMPILER V7.08   LCD_LIB                                                               12/06/2003 01:45:54 PAGE 4   
+
+                                           ; SOURCE LINE # 31
+0009 900000            MOV     DPTR,#wrctl_lcd
+000C 7438              MOV     A,#038H
+000E F0                MOVX    @DPTR,A
+000F         ?C0005:
+                                           ; SOURCE LINE # 33
+000F 120000      R     LCALL   busy_lcd
+0012 EF                MOV     A,R7
+0013 70FA              JNZ     ?C0005
+0015         ?C0006:
+                                           ; SOURCE LINE # 35
+0015 900000            MOV     DPTR,#wrctl_lcd
+0018 740D              MOV     A,#0DH
+001A F0                MOVX    @DPTR,A
+001B         ?C0007:
+                                           ; SOURCE LINE # 37
+001B 120000      R     LCALL   busy_lcd
+001E EF                MOV     A,R7
+001F 70FA              JNZ     ?C0007
+0021         ?C0008:
+                                           ; SOURCE LINE # 38
+0021 900000            MOV     DPTR,#wrctl_lcd
+0024 7401              MOV     A,#01H
+0026 F0                MOVX    @DPTR,A
+0027         ?C0009:
+                                           ; SOURCE LINE # 39
+0027 120000      R     LCALL   busy_lcd
+002A EF                MOV     A,R7
+002B 70FA              JNZ     ?C0009
+                                           ; SOURCE LINE # 40
+002D         ?C0011:
+002D 22                RET     
+             ; FUNCTION init_lcd (END)
+
+             ; FUNCTION _locate_lcd (BEGIN)
+                                           ; SOURCE LINE # 45
+;---- Variable 'd' assigned to Register 'R6' ----
+;---- Variable 'col' assigned to Register 'R5' ----
+;---- Variable 'row' assigned to Register 'R7' ----
+                                           ; SOURCE LINE # 46
+                                           ; SOURCE LINE # 48
+0000 EF                MOV     A,R7
+0001 14                DEC     A
+0002 600E              JZ      ?C0014
+0004 14                DEC     A
+0005 600F              JZ      ?C0015
+0007 14                DEC     A
+0008 6010              JZ      ?C0016
+000A 2403              ADD     A,#03H
+000C 700E              JNZ     ?C0012
+                                           ; SOURCE LINE # 49
+                                           ; SOURCE LINE # 50
+000E         ?C0013:
+000E 7E80              MOV     R6,#080H
+                                           ; SOURCE LINE # 51
+0010 800A              SJMP    ?C0012
+                                           ; SOURCE LINE # 52
+0012         ?C0014:
+0012 7EC0              MOV     R6,#0C0H
+                                           ; SOURCE LINE # 53
+0014 8006              SJMP    ?C0012
+                                           ; SOURCE LINE # 54
+C51 COMPILER V7.08   LCD_LIB                                                               12/06/2003 01:45:54 PAGE 5   
+
+0016         ?C0015:
+0016 7E94              MOV     R6,#094H
+                                           ; SOURCE LINE # 55
+0018 8002              SJMP    ?C0012
+                                           ; SOURCE LINE # 56
+001A         ?C0016:
+001A 7ED4              MOV     R6,#0D4H
+                                           ; SOURCE LINE # 57
+                                           ; SOURCE LINE # 58
+001C         ?C0012:
+                                           ; SOURCE LINE # 59
+001C EE                MOV     A,R6
+001D 2D                ADD     A,R5
+001E FE                MOV     R6,A
+001F 900000            MOV     DPTR,#wrctl_lcd
+0022 F0                MOVX    @DPTR,A
+0023         ?C0017:
+                                           ; SOURCE LINE # 60
+0023 120000      R     LCALL   busy_lcd
+0026 EF                MOV     A,R7
+0027 70FA              JNZ     ?C0017
+                                           ; SOURCE LINE # 61
+0029         ?C0019:
+0029 22                RET     
+             ; FUNCTION _locate_lcd (END)
+
+             ; FUNCTION _wrstr_lcd (BEGIN)
+                                           ; SOURCE LINE # 68
+0000 8B00        R     MOV     ptrbuff,R3
+0002 8A00        R     MOV     ptrbuff+01H,R2
+0004 8900        R     MOV     ptrbuff+02H,R1
+                                           ; SOURCE LINE # 69
+0006         ?C0020:
+                                           ; SOURCE LINE # 71
+0006 AB00        R     MOV     R3,ptrbuff
+0008 0500        R     INC     ptrbuff+02H
+000A E500        R     MOV     A,ptrbuff+02H
+000C AA00        R     MOV     R2,ptrbuff+01H
+000E 7002              JNZ     ?C0031
+0010 0500        R     INC     ptrbuff+01H
+0012         ?C0031:
+0012 14                DEC     A
+0013 F9                MOV     R1,A
+0014 120000      E     LCALL   ?C?CLDPTR
+0017 FF                MOV     R7,A
+;---- Variable 'd' assigned to Register 'R7' ----
+0018 600C              JZ      ?C0024
+                                           ; SOURCE LINE # 72
+                                           ; SOURCE LINE # 73
+001A 900100            MOV     DPTR,#wrdata_lcd
+001D F0                MOVX    @DPTR,A
+001E         ?C0022:
+                                           ; SOURCE LINE # 74
+001E 120000      R     LCALL   busy_lcd
+0021 EF                MOV     A,R7
+0022 60E2              JZ      ?C0020
+0024 80F8              SJMP    ?C0022
+                                           ; SOURCE LINE # 75
+                                           ; SOURCE LINE # 76
+0026         ?C0024:
+0026 22                RET     
+             ; FUNCTION _wrstr_lcd (END)
+C51 COMPILER V7.08   LCD_LIB                                                               12/06/2003 01:45:54 PAGE 6   
+
+
+             ; FUNCTION clr_lcd (BEGIN)
+                                           ; SOURCE LINE # 80
+                                           ; SOURCE LINE # 81
+                                           ; SOURCE LINE # 82
+0000 900000            MOV     DPTR,#wrctl_lcd
+0003 7401              MOV     A,#01H
+0005 F0                MOVX    @DPTR,A
+0006         ?C0025:
+                                           ; SOURCE LINE # 83
+0006 120000      R     LCALL   busy_lcd
+0009 EF                MOV     A,R7
+000A 70FA              JNZ     ?C0025
+                                           ; SOURCE LINE # 84
+000C         ?C0027:
+000C 22                RET     
+             ; FUNCTION clr_lcd (END)
+
+             ; FUNCTION _control (BEGIN)
+                                           ; SOURCE LINE # 88
+;---- Variable 'cntrl' assigned to Register 'R7' ----
+                                           ; SOURCE LINE # 89
+                                           ; SOURCE LINE # 90
+0000 900000            MOV     DPTR,#wrctl_lcd
+0003 EF                MOV     A,R7
+0004 F0                MOVX    @DPTR,A
+0005         ?C0028:
+                                           ; SOURCE LINE # 91
+0005 120000      R     LCALL   busy_lcd
+0008 EF                MOV     A,R7
+0009 70FA              JNZ     ?C0028
+                                           ; SOURCE LINE # 92
+000B         ?C0030:
+000B 22                RET     
+             ; FUNCTION _control (END)
+
+C51 COMPILER V7.08   LCD_LIB                                                               12/06/2003 01:45:54 PAGE 7   
+
+NAME                                    CLASS   MSPACE  TYPE    OFFSET  SIZE
+====                                    =====   ======  ====    ======  ====
+
+
+P1 . . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   0090H  1
+P3 . . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   00B0H  1
+rddata_lcd . . . . . . . . . . . . . .  PUBLIC   XDATA  CHAR     0300H  1
+IE . . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   00A8H  1
+IP . . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   00B8H  1
+wrdata_lcd . . . . . . . . . . . . . .  PUBLIC   XDATA  CHAR     0100H  1
+rdctl_lcd. . . . . . . . . . . . . . .  PUBLIC   XDATA  CHAR     0200H  1
+SCON . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   0098H  1
+TCON . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   0088H  1
+_wrstr_lcd . . . . . . . . . . . . . .  PUBLIC   CODE   PROC     0000H  -----
+  ptrbuff. . . . . . . . . . . . . . .  AUTO     DATA   PTR      0000H  3
+  d. . . . . . . . . . . . . . . . . .  * REG *  DATA   CHAR     0007H  1
+wrctl_lcd. . . . . . . . . . . . . . .  PUBLIC   XDATA  CHAR     0000H  1
+init_lcd . . . . . . . . . . . . . . .  PUBLIC   CODE   PROC     0000H  -----
+clr_lcd. . . . . . . . . . . . . . . .  PUBLIC   CODE   PROC     0000H  -----
+busy_lcd . . . . . . . . . . . . . . .  PUBLIC   CODE   PROC     0000H  -----
+_control . . . . . . . . . . . . . . .  PUBLIC   CODE   PROC     0000H  -----
+  cntrl. . . . . . . . . . . . . . . .  * REG *  DATA   CHAR     0007H  1
+T2CON. . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   00C8H  1
+_locate_lcd. . . . . . . . . . . . . .  PUBLIC   CODE   PROC     0000H  -----
+  row. . . . . . . . . . . . . . . . .  * REG *  DATA   CHAR     0007H  1
+  col. . . . . . . . . . . . . . . . .  * REG *  DATA   CHAR     0005H  1
+  d. . . . . . . . . . . . . . . . . .  * REG *  DATA   CHAR     0006H  1
+_delay . . . . . . . . . . . . . . . .  PUBLIC   CODE   PROC     000EH  -----
+  dly. . . . . . . . . . . . . . . . .  AUTO     DATA   U_LONG   0000H  4
+PSW. . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   00D0H  1
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    201    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       7
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

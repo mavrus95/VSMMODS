@@ -1,0 +1,82 @@
+LISA MODEL DESCRIPTION FORMAT 3.0
+=================================
+Design:   74XX42.DSN
+Doc. no.: <NONE>
+Revision: <NONE>
+Author:   <NONE>
+Created:  09-Sep-93
+Modified: 29-Gen-02
+
+*PROPERTIES,0    
+
+*MAPPINGS,3    
+7442 : TDLHDQ=17n, TDHLDQ=17n, TGQ=?
+74HC42 : TDLHDQ=16n, TDHLDQ=16n, TGQ=?
+74LS42 : TDLHDQ=15n, TDHLDQ=15n, TGQ=?
+
+*MODELDEFS,0    
+
+*PARTLIST,1   
+U2,DECODER_4_10,DECODER_4_10,INVERT="EN,Q[0..9]",PRIMITIVE=DIGITAL,TDHLDQ=<TDHLDQ>,TDLHDQ=<TDLHDQ>,TGQ=<TGQ>
+
+*NETLIST,15  
+0,2   
+0,OT
+U2,OP,Q0
+
+1,2   
+1,OT
+U2,OP,Q1
+
+2,2   
+2,OT
+U2,OP,Q2
+
+3,2   
+3,OT
+U2,OP,Q3
+
+4,2   
+4,OT
+U2,OP,Q4
+
+5,2   
+5,OT
+U2,OP,Q5
+
+6,2   
+6,OT
+U2,OP,Q6
+
+7,2   
+7,OT
+U2,OP,Q7
+
+A,2   
+A,IT
+U2,IP,D0
+
+B,2   
+B,IT
+U2,IP,D1
+
+C,2   
+C,IT
+U2,IP,D2
+
+GND,3   
+GND,PR
+U2,IP,EN
+U2,IP,ALL
+
+8,2   
+8,OT
+U2,OP,Q8
+
+9,2   
+9,OT
+U2,OP,Q9
+
+D,2   
+D,IT
+U2,IP,D3

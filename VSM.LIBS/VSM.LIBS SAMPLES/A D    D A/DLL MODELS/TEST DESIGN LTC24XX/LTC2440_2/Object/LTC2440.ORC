@@ -1,0 +1,9 @@
+$0E000880  _control
+$1E0008C0  _locate_lcd
+$3E000CF1  _LTC2440_get_value
+$1E0008E1  _LTC2440_rd
+$1E00088E  _wrstr_lcd
+$0E000880  busy_lcd
+$0E000880  clr_lcd
+$80000000  init_ad
+$18000000  LTC2440_eoc

@@ -1,0 +1,593 @@
+BL51 BANKED LINKER/LOCATER V5.03                                                        12/07/2003  21:05:08  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V5.03, INVOKED BY:
+C:\KEIL\C51\BIN\BL51.EXE .\Object\STARTUP.obj, .\Object\LTC2440.obj, .\Object\Ltc2440_driver.obj, .\Object\LCD_lib.obj T
+>> O .\Object\LTC2440 PRINT (.\Listings\LTC2440.m51) RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL WITH FLOATING POINT ARITHMETIC
+
+
+INPUT MODULES INCLUDED:
+  .\Object\STARTUP.obj (?C_STARTUP)
+  .\Object\LTC2440.obj (LTC2440)
+  .\Object\Ltc2440_driver.obj (LTC2440_DRIVER)
+  .\Object\LCD_lib.obj (LCD_LIB)
+  C:\KEIL\C51\LIB\C51FPS.LIB (?C?FPADD)
+  C:\KEIL\C51\LIB\C51FPS.LIB (?C?FPDIV)
+  C:\KEIL\C51\LIB\C51FPS.LIB (?C?FCAST)
+  C:\KEIL\C51\LIB\C51FPS.LIB (PRINTF)
+  C:\KEIL\C51\LIB\C51FPS.LIB (?C?FPGETOPN)
+  C:\KEIL\C51\LIB\C51FPS.LIB (?C?FPROUND)
+  C:\KEIL\C51\LIB\C51FPS.LIB (?C?FPCONVERT)
+  C:\KEIL\C51\LIB\C51FPS.LIB (?C?FPMUL)
+  C:\KEIL\C51\LIB\C51FPS.LIB (?C?FTNPWR)
+  C:\KEIL\C51\LIB\C51S.LIB (?C?COPY)
+  C:\KEIL\C51\LIB\C51S.LIB (?C?CLDPTR)
+  C:\KEIL\C51\LIB\C51S.LIB (?C?CLDOPTR)
+  C:\KEIL\C51\LIB\C51S.LIB (?C?CSTPTR)
+  C:\KEIL\C51\LIB\C51S.LIB (?C?CSTOPTR)
+  C:\KEIL\C51\LIB\C51S.LIB (?C?LNEG)
+  C:\KEIL\C51\LIB\C51S.LIB (?C?ULCMP)
+  C:\KEIL\C51\LIB\C51S.LIB (?C?LLDPTR)
+  C:\KEIL\C51\LIB\C51S.LIB (?C?LILDIDATA)
+  C:\KEIL\C51\LIB\C51S.LIB (?C?PLDIIDATA)
+  C:\KEIL\C51\LIB\C51S.LIB (?C?CCASE)
+  C:\KEIL\C51\LIB\C51S.LIB (PUTCHAR)
+  C:\KEIL\C51\LIB\C51S.LIB (?C?LLDIDATA)
+  C:\KEIL\C51\LIB\C51S.LIB (?C?LLDXDATA)
+  C:\KEIL\C51\LIB\C51S.LIB (?C?LLDPDATA)
+  C:\KEIL\C51\LIB\C51S.LIB (?C?LLDCODE)
+
+
+LINK MAP OF MODULE:  .\Object\LTC2440 (?C_STARTUP)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+                    0008H     0018H                  *** GAP ***
+            BIT     0020H.0   0001H.1   UNIT         _BIT_GROUP_
+                    0021H.1   0000H.7                *** GAP ***
+            DATA    0022H     003CH     UNIT         _DATA_GROUP_
+            IDATA   005EH     0001H     UNIT         ?STACK
+
+            * * * * * * *  X D A T A   M E M O R Y  * * * * * * *
+            XDATA   0000H     0001H     ABSOLUTE     
+                    0001H     00FFH                  *** GAP ***
+            XDATA   0100H     0001H     ABSOLUTE     
+BL51 BANKED LINKER/LOCATER V5.03                                                      12/07/2003  21:05:08  PAGE 2
+
+
+                    0101H     00FFH                  *** GAP ***
+            XDATA   0200H     0001H     ABSOLUTE     
+                    0201H     00FFH                  *** GAP ***
+            XDATA   0300H     0001H     ABSOLUTE     
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     0701H     UNIT         ?C?LIB_CODE
+            CODE    0704H     046FH     UNIT         ?PR?PRINTF?PRINTF
+            CODE    0B73H     019FH     UNIT         ?PR?MAIN?LTC2440
+            CODE    0D12H     0060H     UNIT         ?PR?_LTC2440_RD?LTC2440_DRIVER
+            CODE    0D72H     005BH     UNIT         ?CO?LTC2440
+            CODE    0DCDH     0052H     UNIT         ?PR?DATAOUT?LTC2440_DRIVER
+            CODE    0E1FH     002EH     UNIT         ?PR?INIT_LCD?LCD_LIB
+            CODE    0E4DH     002AH     UNIT         ?PR?_LOCATE_LCD?LCD_LIB
+            CODE    0E77H     0029H     UNIT         ?PR?_DELAY?LCD_LIB
+            CODE    0EA0H     0027H     UNIT         ?PR?_WRSTR_LCD?LCD_LIB
+            CODE    0EC7H     0027H     UNIT         ?PR?PUTCHAR?PUTCHAR
+            CODE    0EEEH     000DH     UNIT         ?PR?LTC2440_EOC?LTC2440_DRIVER
+            CODE    0EFBH     000DH     UNIT         ?PR?CLR_LCD?LCD_LIB
+            CODE    0F08H     000CH     UNIT         ?C_C51STARTUP
+            CODE    0F14H     000CH     UNIT         ?PR?_CONTROL?LCD_LIB
+            CODE    0F20H     0008H     UNIT         ?PR?BUSY_LCD?LCD_LIB
+            CODE    0F28H     0005H     UNIT         ?PR?INIT_AD?LTC2440_DRIVER
+            CODE    0F2DH     0004H     UNIT         ?PR?_LTC2440_GET_VALUE?LTC2440_DRIVER
+
+
+
+OVERLAY MAP OF MODULE:   .\Object\LTC2440 (?C_STARTUP)
+
+
+SEGMENT                                          BIT_GROUP          DATA_GROUP 
+  +--> CALLED SEGMENT                         START    LENGTH     START    LENGTH
+---------------------------------------------------------------------------------
+?C_C51STARTUP                                 -----    -----      -----    -----
+  +--> ?PR?MAIN?LTC2440
+
+?PR?MAIN?LTC2440                              -----    -----      0022H    0020H
+  +--> ?CO?LTC2440
+  +--> ?PR?INIT_LCD?LCD_LIB
+  +--> ?PR?INIT_AD?LTC2440_DRIVER
+  +--> ?PR?_CONTROL?LCD_LIB
+  +--> ?PR?CLR_LCD?LCD_LIB
+  +--> ?PR?_WRSTR_LCD?LCD_LIB
+  +--> ?PR?_LOCATE_LCD?LCD_LIB
+  +--> ?PR?_DELAY?LCD_LIB
+  +--> ?PR?LTC2440_EOC?LTC2440_DRIVER
+  +--> ?PR?_LTC2440_RD?LTC2440_DRIVER
+  +--> ?PR?_LTC2440_GET_VALUE?LTC2440_DRIVER
+  +--> ?PR?PRINTF?PRINTF
+
+?PR?INIT_LCD?LCD_LIB                          -----    -----      -----    -----
+  +--> ?PR?_DELAY?LCD_LIB
+  +--> ?PR?BUSY_LCD?LCD_LIB
+
+?PR?_DELAY?LCD_LIB                            -----    -----      0042H    0004H
+
+BL51 BANKED LINKER/LOCATER V5.03                                                      12/07/2003  21:05:08  PAGE 3
+
+
+?PR?_CONTROL?LCD_LIB                          -----    -----      -----    -----
+  +--> ?PR?BUSY_LCD?LCD_LIB
+
+?PR?CLR_LCD?LCD_LIB                           -----    -----      -----    -----
+  +--> ?PR?BUSY_LCD?LCD_LIB
+
+?PR?_WRSTR_LCD?LCD_LIB                        -----    -----      0042H    0003H
+  +--> ?PR?BUSY_LCD?LCD_LIB
+
+?PR?_LOCATE_LCD?LCD_LIB                       -----    -----      -----    -----
+  +--> ?PR?BUSY_LCD?LCD_LIB
+
+?PR?_LTC2440_RD?LTC2440_DRIVER                -----    -----      -----    -----
+  +--> ?PR?DATAOUT?LTC2440_DRIVER
+
+?PR?PRINTF?PRINTF                             0020H.0  0001H.1    0042H    001CH
+  +--> ?PR?PUTCHAR?PUTCHAR
+
+
+
+SYMBOL TABLE OF MODULE:  .\Object\LTC2440 (?C_STARTUP)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        ?C_STARTUP
+  C:0F08H         SEGMENT       ?C_C51STARTUP
+  I:005EH         SEGMENT       ?STACK
+  C:0000H         PUBLIC        ?C_STARTUP
+  D:00E0H         SYMBOL        ACC
+  D:00F0H         SYMBOL        B
+  D:0083H         SYMBOL        DPH
+  D:0082H         SYMBOL        DPL
+  N:0000H         SYMBOL        IBPSTACK
+  N:0100H         SYMBOL        IBPSTACKTOP
+  N:0080H         SYMBOL        IDATALEN
+  C:0F0BH         SYMBOL        IDATALOOP
+  N:0000H         SYMBOL        PBPSTACK
+  N:0000H         SYMBOL        PBPSTACKTOP
+  N:0000H         SYMBOL        PDATALEN
+  N:0000H         SYMBOL        PDATASTART
+  N:0000H         SYMBOL        PPAGE
+  N:0000H         SYMBOL        PPAGEENABLE
+  D:00A0H         SYMBOL        PPAGE_SFR
+  D:0081H         SYMBOL        SP
+  C:0F08H         SYMBOL        STARTUP1
+  N:0000H         SYMBOL        XBPSTACK
+  N:0000H         SYMBOL        XBPSTACKTOP
+  N:0000H         SYMBOL        XDATALEN
+  N:0000H         SYMBOL        XDATASTART
+  C:0000H         LINE#         92
+  C:0F08H         LINE#         99
+  C:0F0AH         LINE#         100
+  C:0F0BH         LINE#         101
+  C:0F0CH         LINE#         102
+  C:0F0EH         LINE#         151
+  C:0F11H         LINE#         155
+BL51 BANKED LINKER/LOCATER V5.03                                                      12/07/2003  21:05:08  PAGE 4
+
+
+  -------         ENDMOD        ?C_STARTUP
+
+  -------         MODULE        LTC2440
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0090H         PUBLIC        P1
+  D:00B0H         PUBLIC        P3
+  D:00A8H         PUBLIC        IE
+  D:00B8H         PUBLIC        IP
+  C:0B73H         PUBLIC        main
+  D:0098H         PUBLIC        SCON
+  D:0088H         PUBLIC        TCON
+  C:0DC9H         SYMBOL        _?ix1000
+  D:00C8H         PUBLIC        T2CON
+  D:00D0H         PUBLIC        PSW
+  -------         PROC          MAIN
+  -------         DO            
+  D:0022H         SYMBOL        cdata
+  D:0026H         SYMBOL        status
+  D:0027H         SYMBOL        conv
+  D:002BH         SYMBOL        buf
+  D:0039H         SYMBOL        na
+  D:003AH         SYMBOL        reads
+  D:003EH         SYMBOL        avr
+  -------         ENDDO         
+  C:0B73H         LINE#         13
+  C:0B73H         LINE#         14
+  C:0B73H         LINE#         15
+  C:0B86H         LINE#         17
+  C:0B8FH         LINE#         19
+  C:0B91H         LINE#         21
+  C:0B99H         LINE#         22
+  C:0BA1H         LINE#         27
+  C:0BA4H         LINE#         29
+  C:0BA7H         LINE#         32
+  C:0BACH         LINE#         35
+  C:0BAFH         LINE#         38
+  C:0BB8H         LINE#         39
+  C:0BBFH         LINE#         40
+  C:0BC8H         LINE#         41
+  C:0BD3H         LINE#         42
+  C:0BD6H         LINE#         45
+  C:0BDCH         LINE#         46
+  C:0BE5H         LINE#         48
+  C:0BE5H         LINE#         49
+  C:0BE5H         LINE#         50
+  C:0BEAH         LINE#         51
+  C:0BF5H         LINE#         52
+  C:0BF8H         LINE#         53
+  C:0BF8H         LINE#         55
+  C:0C03H         LINE#         56
+  C:0C14H         LINE#         59
+  C:0C19H         LINE#         60
+  C:0C2DH         LINE#         61
+  C:0C32H         LINE#         62
+  C:0C50H         LINE#         63
+  C:0C50H         LINE#         65
+  C:0C55H         LINE#         66
+BL51 BANKED LINKER/LOCATER V5.03                                                      12/07/2003  21:05:08  PAGE 5
+
+
+  C:0C6CH         LINE#         67
+  C:0C71H         LINE#         68
+  C:0C98H         LINE#         70
+  C:0CA2H         LINE#         71
+  C:0CBFH         LINE#         72
+  C:0CBFH         LINE#         74
+  C:0CF4H         LINE#         75
+  C:0CF7H         LINE#         76
+  C:0CFFH         LINE#         77
+  C:0CFFH         LINE#         78
+  C:0CFFH         LINE#         79
+  C:0CFFH         LINE#         81
+  C:0D06H         LINE#         82
+  C:0D0FH         LINE#         83
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        LTC2440
+
+  -------         MODULE        LTC2440_DRIVER
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0090H         PUBLIC        P1
+  D:00B0H         PUBLIC        P3
+  D:00A8H         PUBLIC        IE
+  D:00B8H         PUBLIC        IP
+  C:0F2DH         PUBLIC        _LTC2440_get_value
+  D:0098H         PUBLIC        SCON
+  D:0088H         PUBLIC        TCON
+  B:0090H.0       PUBLIC        sck
+  C:0D12H         PUBLIC        _LTC2440_rd
+  B:0090H.1       PUBLIC        sdo
+  C:0EEEH         PUBLIC        LTC2440_eoc
+  B:0090H.2       PUBLIC        cs
+  C:0F28H         PUBLIC        init_ad
+  D:00C8H         PUBLIC        T2CON
+  C:0DCDH         SYMBOL        dataout
+  D:00D0H         PUBLIC        PSW
+  -------         PROC          DATAOUT
+  -------         DO            
+  D:0007H         SYMBOL        byte
+  -------         ENDDO         
+  C:0DCDH         LINE#         14
+  C:0DCDH         LINE#         15
+  C:0DCDH         LINE#         19
+  C:0DCFH         LINE#         21
+  C:0DD3H         LINE#         22
+  C:0DD8H         LINE#         23
+  C:0DDCH         LINE#         24
+  C:0DE2H         LINE#         25
+  C:0DE6H         LINE#         26
+  C:0DECH         LINE#         27
+  C:0DF0H         LINE#         28
+  C:0DF6H         LINE#         29
+  C:0DFAH         LINE#         30
+  C:0E00H         LINE#         31
+  C:0E04H         LINE#         32
+  C:0E0AH         LINE#         33
+  C:0E0EH         LINE#         34
+  C:0E14H         LINE#         35
+BL51 BANKED LINKER/LOCATER V5.03                                                      12/07/2003  21:05:08  PAGE 6
+
+
+  C:0E18H         LINE#         36
+  C:0E1EH         LINE#         38
+  C:0E1EH         LINE#         39
+  -------         ENDPROC       DATAOUT
+  -------         PROC          _LTC2440_RD
+  D:0001H         SYMBOL        cdata
+  -------         DO            
+  D:0005H         SYMBOL        msb
+  D:0006H         SYMBOL        sig
+  -------         ENDDO         
+  C:0D12H         LINE#         44
+  C:0D12H         LINE#         45
+  C:0D12H         LINE#         49
+  C:0D14H         LINE#         53
+  C:0D1BH         LINE#         54
+  C:0D25H         LINE#         55
+  C:0D2FH         LINE#         56
+  C:0D39H         LINE#         58
+  C:0D3BH         LINE#         60
+  C:0D3DH         LINE#         62
+  C:0D44H         LINE#         63
+  C:0D48H         LINE#         65
+  C:0D4EH         LINE#         67
+  C:0D54H         LINE#         68
+  C:0D57H         LINE#         69
+  C:0D5DH         LINE#         70
+  C:0D60H         LINE#         71
+  C:0D66H         LINE#         72
+  C:0D69H         LINE#         73
+  C:0D6FH         LINE#         74
+  C:0D71H         LINE#         75
+  -------         ENDPROC       _LTC2440_RD
+  -------         PROC          _LTC2440_GET_VALUE
+  D:0001H         SYMBOL        cdata
+  C:0F2DH         LINE#         79
+  C:0F2DH         LINE#         80
+  C:0F2DH         LINE#         81
+  C:0F30H         LINE#         82
+  -------         ENDPROC       _LTC2440_GET_VALUE
+  -------         PROC          INIT_AD
+  C:0F28H         LINE#         87
+  C:0F28H         LINE#         88
+  C:0F28H         LINE#         89
+  C:0F2AH         LINE#         90
+  C:0F2CH         LINE#         91
+  -------         ENDPROC       INIT_AD
+  -------         PROC          LTC2440_EOC
+  C:0EEEH         LINE#         98
+  C:0EEEH         LINE#         99
+  C:0EEEH         LINE#         100
+  C:0EF0H         LINE#         101
+  C:0EF3H         LINE#         102
+  C:0EF5H         LINE#         103
+  C:0EF7H         LINE#         104
+  C:0EF7H         LINE#         105
+  C:0EF7H         LINE#         106
+  C:0EF9H         LINE#         107
+BL51 BANKED LINKER/LOCATER V5.03                                                      12/07/2003  21:05:08  PAGE 7
+
+
+  C:0EFAH         LINE#         108
+  C:0EFAH         LINE#         109
+  -------         ENDPROC       LTC2440_EOC
+  -------         ENDMOD        LTC2440_DRIVER
+
+  -------         MODULE        LCD_LIB
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0090H         PUBLIC        P1
+  D:00B0H         PUBLIC        P3
+  X:0300H         PUBLIC        rddata_lcd
+  D:00A8H         PUBLIC        IE
+  D:00B8H         PUBLIC        IP
+  X:0100H         PUBLIC        wrdata_lcd
+  X:0200H         PUBLIC        rdctl_lcd
+  D:0098H         PUBLIC        SCON
+  D:0088H         PUBLIC        TCON
+  C:0EA0H         PUBLIC        _wrstr_lcd
+  X:0000H         PUBLIC        wrctl_lcd
+  C:0E1FH         PUBLIC        init_lcd
+  C:0EFBH         PUBLIC        clr_lcd
+  C:0F20H         PUBLIC        busy_lcd
+  C:0F14H         PUBLIC        _control
+  D:00C8H         PUBLIC        T2CON
+  C:0E4DH         PUBLIC        _locate_lcd
+  C:0E85H         PUBLIC        _delay
+  D:00D0H         PUBLIC        PSW
+  C:0E77H         SYMBOL        L?0033
+  -------         PROC          L?0032
+  -------         ENDPROC       L?0032
+  C:0E77H         SYMBOL        L?0033
+  -------         PROC          _DELAY
+  D:0042H         SYMBOL        dly
+  C:0E85H         LINE#         7
+  C:0E8DH         LINE#         8
+  C:0E8DH         LINE#         9
+  C:0E9FH         LINE#         10
+  -------         ENDPROC       _DELAY
+  -------         PROC          BUSY_LCD
+  C:0F20H         LINE#         14
+  C:0F20H         LINE#         15
+  C:0F20H         LINE#         16
+  C:0F27H         LINE#         17
+  -------         ENDPROC       BUSY_LCD
+  -------         PROC          INIT_LCD
+  C:0E1FH         LINE#         21
+  C:0E1FH         LINE#         22
+  C:0E1FH         LINE#         23
+  C:0E1FH         LINE#         24
+  C:0E22H         LINE#         26
+  C:0E22H         LINE#         27
+  C:0E25H         LINE#         29
+  C:0E25H         LINE#         30
+  C:0E28H         LINE#         31
+  C:0E2EH         LINE#         33
+  C:0E34H         LINE#         35
+  C:0E3AH         LINE#         37
+  C:0E40H         LINE#         38
+BL51 BANKED LINKER/LOCATER V5.03                                                      12/07/2003  21:05:08  PAGE 8
+
+
+  C:0E46H         LINE#         39
+  C:0E4CH         LINE#         40
+  -------         ENDPROC       INIT_LCD
+  -------         PROC          _LOCATE_LCD
+  D:0007H         SYMBOL        row
+  D:0005H         SYMBOL        col
+  -------         DO            
+  D:0006H         SYMBOL        d
+  -------         ENDDO         
+  C:0E4DH         LINE#         45
+  C:0E4DH         LINE#         46
+  C:0E4DH         LINE#         48
+  C:0E5BH         LINE#         49
+  C:0E5BH         LINE#         50
+  C:0E5DH         LINE#         51
+  C:0E5FH         LINE#         52
+  C:0E61H         LINE#         53
+  C:0E63H         LINE#         54
+  C:0E65H         LINE#         55
+  C:0E67H         LINE#         56
+  C:0E69H         LINE#         57
+  C:0E69H         LINE#         58
+  C:0E69H         LINE#         59
+  C:0E70H         LINE#         60
+  C:0E76H         LINE#         61
+  -------         ENDPROC       _LOCATE_LCD
+  -------         PROC          _WRSTR_LCD
+  D:0042H         SYMBOL        ptrbuff
+  -------         DO            
+  D:0007H         SYMBOL        d
+  -------         ENDDO         
+  C:0EA0H         LINE#         68
+  C:0EA6H         LINE#         69
+  C:0EA6H         LINE#         71
+  C:0EBAH         LINE#         72
+  C:0EBAH         LINE#         73
+  C:0EBEH         LINE#         74
+  C:0EC6H         LINE#         75
+  C:0EC6H         LINE#         76
+  -------         ENDPROC       _WRSTR_LCD
+  -------         PROC          CLR_LCD
+  C:0EFBH         LINE#         80
+  C:0EFBH         LINE#         81
+  C:0EFBH         LINE#         82
+  C:0F01H         LINE#         83
+  C:0F07H         LINE#         84
+  -------         ENDPROC       CLR_LCD
+  -------         PROC          _CONTROL
+  D:0007H         SYMBOL        cntrl
+  C:0F14H         LINE#         88
+  C:0F14H         LINE#         89
+  C:0F14H         LINE#         90
+  C:0F19H         LINE#         91
+  C:0F1FH         LINE#         92
+  -------         ENDPROC       _CONTROL
+  -------         ENDMOD        LCD_LIB
+
+BL51 BANKED LINKER/LOCATER V5.03                                                      12/07/2003  21:05:08  PAGE 9
+
+
+  -------         MODULE        ?C?FPADD
+  C:000AH         PUBLIC        ?C?FPADD
+  C:0006H         PUBLIC        ?C?FPSUB
+  -------         ENDMOD        ?C?FPADD
+
+  -------         MODULE        ?C?FPDIV
+  C:00FEH         PUBLIC        ?C?FPDIV
+  -------         ENDMOD        ?C?FPDIV
+
+  -------         MODULE        ?C?FCAST
+  C:01A5H         PUBLIC        ?C?FCASTC
+  C:01A0H         PUBLIC        ?C?FCASTI
+  C:019BH         PUBLIC        ?C?FCASTL
+  -------         ENDMOD        ?C?FCAST
+
+  -------         MODULE        PRINTF
+  D:0042H         PUBLIC        ?_PRINTF?BYTE
+  D:0042H         PUBLIC        ?_SPRINTF?BYTE
+  C:0766H         PUBLIC        _PRINTF
+  C:0760H         PUBLIC        _SPRINTF
+  -------         ENDMOD        PRINTF
+
+  -------         MODULE        ?C?FPROUND
+  C:0223H         PUBLIC        ?C?FPROUND
+  -------         ENDMOD        ?C?FPROUND
+
+  -------         MODULE        ?C?FPCONVERT
+  C:0252H         PUBLIC        ?C?FPCONVERT
+  -------         ENDMOD        ?C?FPCONVERT
+
+  -------         MODULE        ?C?FPMUL
+  C:0355H         PUBLIC        ?C?FPMUL
+  -------         ENDMOD        ?C?FPMUL
+
+  -------         MODULE        ?C?FTNPWR
+  C:048BH         PUBLIC        ?C?FTNPWR
+  -------         ENDMOD        ?C?FTNPWR
+
+  -------         MODULE        ?C?COPY
+  C:059BH         PUBLIC        ?C?COPY
+  -------         ENDMOD        ?C?COPY
+
+  -------         MODULE        ?C?CLDPTR
+  C:05C1H         PUBLIC        ?C?CLDPTR
+  -------         ENDMOD        ?C?CLDPTR
+
+  -------         MODULE        ?C?CLDOPTR
+  C:05DAH         PUBLIC        ?C?CLDOPTR
+  -------         ENDMOD        ?C?CLDOPTR
+
+  -------         MODULE        ?C?CSTPTR
+  C:0607H         PUBLIC        ?C?CSTPTR
+  -------         ENDMOD        ?C?CSTPTR
+
+  -------         MODULE        ?C?CSTOPTR
+  C:0619H         PUBLIC        ?C?CSTOPTR
+  -------         ENDMOD        ?C?CSTOPTR
+BL51 BANKED LINKER/LOCATER V5.03                                                      12/07/2003  21:05:08  PAGE 10
+
+
+
+  -------         MODULE        ?C?LNEG
+  C:063BH         PUBLIC        ?C?LNEG
+  -------         ENDMOD        ?C?LNEG
+
+  -------         MODULE        ?C?ULCMP
+  C:0649H         PUBLIC        ?C?ULCMP
+  -------         ENDMOD        ?C?ULCMP
+
+  -------         MODULE        ?C?LLDPTR
+  C:065AH         PUBLIC        ?C?LLDPTR
+  -------         ENDMOD        ?C?LLDPTR
+
+  -------         MODULE        ?C?LILDIDATA
+  C:0683H         PUBLIC        ?C?LILDIDATA
+  C:067AH         PUBLIC        ?C?LILDIDATA1
+  C:067CH         PUBLIC        ?C?LILDIDATA8
+  -------         ENDMOD        ?C?LILDIDATA
+
+  -------         MODULE        ?C?PLDIIDATA
+  C:069AH         PUBLIC        ?C?PLDIIDATA
+  -------         ENDMOD        ?C?PLDIIDATA
+
+  -------         MODULE        ?C?CCASE
+  C:06AAH         PUBLIC        ?C?CCASE
+  -------         ENDMOD        ?C?CCASE
+
+  -------         MODULE        PUTCHAR
+  C:0EC7H         PUBLIC        _PUTCHAR
+  -------         ENDMOD        PUTCHAR
+
+  -------         MODULE        ?C?LLDIDATA
+  C:06D0H         PUBLIC        ?C?LLDIDATA
+  -------         ENDMOD        ?C?LLDIDATA
+
+  -------         MODULE        ?C?LLDXDATA
+  C:06DCH         PUBLIC        ?C?LLDXDATA
+  -------         ENDMOD        ?C?LLDXDATA
+
+  -------         MODULE        ?C?LLDPDATA
+  C:06E8H         PUBLIC        ?C?LLDPDATA
+  -------         ENDMOD        ?C?LLDPDATA
+
+  -------         MODULE        ?C?LLDCODE
+  C:06F4H         PUBLIC        ?C?LLDCODE
+  -------         ENDMOD        ?C?LLDCODE
+
+Program Size: data=70.1 xdata=4 code=3889
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

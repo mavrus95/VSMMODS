@@ -1,0 +1,6 @@
+".\Object\STARTUP.obj",
+".\Object\LTC2440.obj",
+".\Object\Ltc2440_driver.obj",
+".\Object\LCD_lib.obj" 
+TO ".\Object\LTC2440" 
+PRINT(".\Listings\LTC2440.m51") RAMSIZE(256) 

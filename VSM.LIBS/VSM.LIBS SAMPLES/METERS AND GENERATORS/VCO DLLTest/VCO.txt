@@ -1,0 +1,10 @@
+VCO properties.
+
+NAME		DEFAULT VALUES      	DESCRIPTION	
+INIT		High			Initial state at simulation begining.
+MINF		10k 			Lower value of frequency range at lower control voltage input value
+MAXF		350k			Highest value of frequency range at hihest control voltage input value
+MINVIN		0			Lower end of input control voltage range.
+MAXVIN		5			Highest value of input control voltage range
+THL		10n			High to Low time delay
+TLH 		10n			Low to High time delay

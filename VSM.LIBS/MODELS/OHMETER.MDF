@@ -1,0 +1,30 @@
+LISA MODEL DESCRIPTION FORMAT 5.0
+=================================
+Design:   C:\Programmi\Labcenter Electronics\Proteus 5.2 Professional\NEW_LIB\OHMETER\OHMETER.DSN
+Doc. no.: <NONE>
+Revision: <NONE>
+Author:   <NONE>
+Created:  21/04/02
+Modified: 28/05/02
+
+*PROPERTIES,0    
+
+*MODELDEFS,0    
+
+*PARTLIST,2    
+I1,CSOURCE,1m,PRIMITIVE=ANALOGUE
+VP1,RTVPROBE,RTVPROBE,MAX=1.0,MIN=0,PARENT=<INDICATOR>,PRIMITIVE=ANALOG,SCALE=1000
+
+*NETLIST,2    
++,3
++,GT
+VP1,PS,+
+I1,PS,-
+
+-,3
+-,GT
+VP1,PS,-
+I1,PS,+
+
+*GATES,0    
+
