@@ -1,0 +1,28 @@
+LISA MODEL DESCRIPTION FORMAT 6.0
+=================================
+Design:   ADR291
+Doc. no.: <ADR291/1>
+Revision: <1.0>
+Author:   <EASY - CORP - ALL RIGHTS RESERVED>
+Created:  19/07/03
+Modified: 20/07/03
+
+*PROPERTIES,0    
+
+*MODELDEFS,0    
+
+*PARTLIST,1    
+R1,RESISTOR,10k,PRIMITIVE=ANALOGUE
+
+*NETLIST,2    
++2.5V,3
+VOUT,OT
++2.5V,PR
+R1,PS,2
+
+GND,2
+GND,PR
+R1,PS,1
+
+*GATES,0    
+

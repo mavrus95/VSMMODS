@@ -1,11 +1,11 @@
 LISA MODEL DESCRIPTION FORMAT 6.0
 =================================
-Design:   C:\Documents and Settings\notim\My Documents\VSM.LIBS\VSM.library\VSM.LIBS SAMPLES\cmos models tests\4585\4585MODEL.DSN
+Design:   C:\Program Files\Labcenter Electronics\VSM.LIBS\VSM.LIBS SAMPLES\CMOS SERIES MODEL DESIGNS\4585\4585MODEL.DSN
 Doc. no.: <NONE>
 Revision: <NONE>
 Author:   <NONE>
 Created:  13/07/03
-Modified: 13/07/03
+Modified: 06/06/04
 
 *PROPERTIES,1    
 TGQ=?

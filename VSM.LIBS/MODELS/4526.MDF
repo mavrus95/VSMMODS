@@ -1,11 +1,11 @@
-LISA MODEL DESCRIPTION FORMAT 5.0
+LISA MODEL DESCRIPTION FORMAT 6.0
 =================================
-Design:   C:\Program Files\Labcenter Electronics\Proteus 5.2 Lite\PROTEUS DEVELOPMENT LIBRARY  FOLDER\LIBRARY DEVELOPMENT FOLDER\cmos\4526\4526.DSN
+Design:   C:\Program Files\Labcenter Electronics\VSM.LIBS\VSM.LIBS SAMPLES\CMOS SERIES MODEL DESIGNS\4526\4526.DSN
 Doc. no.: <NONE>
 Revision: <NONE>
 Author:   <NONE>
 Created:  03/02/02
-Modified: 03/02/02
+Modified: 06/06/04
 
 *PROPERTIES,0    
 

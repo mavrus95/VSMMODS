@@ -1,11 +1,11 @@
 LISA MODEL DESCRIPTION FORMAT 6.0
 =================================
-Design:   C:\Program Files\Labcenter Electronics\3RD PARTY LIBS_MODELS\VSM.LIBS SAMPLES\METERS AND GENERATORS\SWORDGEN.DSN
+Design:   C:\Program Files\Labcenter Electronics\VSM.LIBS\VSM.LIBS SAMPLES\METERS AND GENERATORS\SWORDGEN.DSN
 Doc. no.: <NONE>
 Revision: <NONE>
 Author:   <NONE>
 Created:  31/07/03
-Modified: 28/12/03
+Modified: 06/06/04
 
 *PROPERTIES,20   
 16BITINIT=<16BITINIT>

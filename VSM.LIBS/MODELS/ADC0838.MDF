@@ -1,11 +1,11 @@
 LISA MODEL DESCRIPTION FORMAT 6.0
 =================================
-Design:   C:\Documents and Settings\Administrator\My Documents\VSM.LIBS\MYDESIGNS\EBOARD DESIGNS\ADC0838.DSN
+Design:   C:\Program Files\Labcenter Electronics\VSM.LIBS\VSM.LIBS SAMPLES\A D    D A\LISA MODELS\ADC0838.DSN
 Doc. no.: <NONE>
 Revision: <NONE>
 Author:   <NONE>
 Created:  01/02/04
-Modified: 04/02/04
+Modified: 06/06/04
 
 *PROPERTIES,0    
 
@@ -396,11 +396,11 @@ ADC1,IP,VREF-
 U13,PS,RESET
 U13,IP,OE
 U13,IP,EN
+U2,IP,ALL
 U1,IP,ALL
 U12,PS,RESET
 U12,IP,EN
 U12,IP,OE
-U2,IP,ALL
 
 *GATES,0    
 

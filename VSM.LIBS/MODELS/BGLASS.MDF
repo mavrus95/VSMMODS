@@ -1,11 +1,11 @@
 LISA MODEL DESCRIPTION FORMAT 6.0
 =================================
-Design:   C:\Program Files\Labcenter Electronics\VSM.LIBS\GRAPHICS PARTS DESIGNS\KEYPADS_KITv.1.DSN
+Design:   C:\Program Files\Labcenter Electronics\VSM.LIBS\VSM.LIBS SAMPLES\OPTICAL AND DISPLAYS\FIRE PROTECTION SYSTEMS\BREAK GLASS.DSN
 Doc. no.: <NONE>
 Revision: <NONE>
 Author:   <NONE>
-Created:  19/02/03
-Modified: 01/02/04
+Created:  01/02/04
+Modified: 06/06/04
 
 *PROPERTIES,1    
 STATE=<STATE>
@@ -16,13 +16,13 @@ STATE=<STATE>
 SW1,RTSWITCH,RTSWITCH,PRIMITIVE=PASSIVE,R(0)=100m,R(1)=100M,STATE=<STATE>,TSWITCH=1u
 
 *NETLIST,2    
-1,2
-1,GT
-SW1,PS,1
-
 COM,2
 COM,GT
 SW1,PS,2
+
+1,2
+1,GT
+SW1,PS,1
 
 *GATES,0    
 
