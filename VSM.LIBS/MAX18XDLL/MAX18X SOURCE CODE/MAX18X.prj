@@ -1,0 +1,19 @@
+82572
+D:\DIGITAL MARS\MAX18XDLL\MAX18X SOURCE CODE\MAX18X.prj
+MAX18X.OPN
+novcs
+MAX18X.DEF
+21
+1093453086
+0 0 0 0 0 "MAX18X.CPP" ""
+0 0 0 0 0 "MAX18X.DEF" ""
+0 -1 -1 0 0 "MAX18X.HPP" ""
+0 -1 -1 0 0 "DEVKEYS.HPP" ""
+0 -1 -1 0 0 "vsm.hpp" ""
+0 -1 0 0 0 "C:\dm\include\math.h" ""
+0 -1 0 0 0 "C:\dm\include\string.h" ""
+0 -1 0 0 0 "C:\dm\include\stdio.h" ""
+0 -1 0 0 0 "C:\dm\include\iostream.h" ""
+0 -1 0 0 0 "vdm.hpp" ""
+0 -1 0 0 0 "C:\dm\include\stdlib.h" ""
+0 -1 0 0 0 "C:\dm\include\ctype.h" ""

@@ -1,0 +1,66 @@
+*********************************************************************************************
+---- LEGAL BLURB ---- 
+AS USUAL.. WITH DEVELOPMENT GRADE PROJECTS AND OPEN SOURCE PROJECTS
+KEEP IN MIND.
+THIS PROGRAM CODE, DESIGN'S, DOCUMENTATION, AND OTHER DETAILS ARE PROVIDED "AS IS", 
+WITHOUT WARRANTY OF ANY KIND, 
+IMPLIED WARRANTY OF MECHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE. 
+SO BY USING THE PROGRAM CODE, DESIGN'S, DOCUMENTATION, AND OTHER DETAILS
+YOU AGREE TO BEAR ALL RISKS AND LIABILITIES ARISING 
+FROM THE USE OF THE PROGRAM CODE, DESIGN'S, DOCUMENTATION, AND OTHER DETAILS
+AND ANY INFORMATION PROVIDED BY THE PROGRAM CODE, DESIGN'S, DOCUMENTATION, AND OTHER DETAILS.
+*********************************************************************************************
+
+last update 03/12/04 build 8		
+THIS DLL IS NOW OPEN SOURCE 
+
+FOR PROTEUS VSM V6.3 OR LATER COMPILED USING API V1.10
+------------------------------------------------------
+
+DETAILED DEVELOPMENT LOG
+------------------------
+for max 18X series A-D converter dll
+
+WRAPPER COMPLETED
+pin statements added 
+---------------------------------------------------------------------------
+
+class progress
+---------------
+max 180		shell started
+max 181		shell started
+max 182		shell started
+max 183_4_5 	joint class   : started
+max 186_8 	joint class   :in-progress
+max 187_189 	joint class   :completed
+
+
+slowed down on this one as knowone asked for any other classes in a hurry so far
+only the max187/189 was needed quick  
+
+
+4 ++	Started again to rebuild all classes adding buspin implimentations
+	for all data bus used.
+3 +?  	Decided to make the max 18x classes that use complex referance pin behaviour
+	do this spice work from submodel designs much like the max19x dll i started
+	take a look its on the c++ coder pages on vsmlibs site's
+2 ++    Rebuilt compounded and cleaned the max187/189
+1 #     removed a bug in the event sheduling of the max187/9
+	now the microwire timings are fully correct
+
+MAYBE SOMEONE WANTS SOME EXPERIANCE MAKING A DLL LIKE THE  MAX18X AND 19X IM WRITING SLOWLY,
+IT TAKES ME  ABOUT 6 MONTHS  IN ROTATION OF 6 OR SO DLL'S LIKE THIS,
+TO EVENTUALY  FINISH A DLL  AND ABOUT 1 YEAR TO TEST AND TWEAK IT. 
+SO FAR IVE MADE FOUR SUCH LITTLE FAMILY GROUP'S IN THE LAST FEW MONTHS
+AND THERE IS SOME SOURCE ON THE SITE FOR ADC083X FAMILY FROM -EA-
+I WILL ADD MORE OF THESE SOURCES WITH TIME 
+{FIRST ILL MAKE A GOOD COLLECTION OF UNRELEASED STUFF}
+IF YOU WANT MORE SOURCES EMAIL VSMLIBS@YAHOO.CO.UK
+AS I HAVE A FEW OF MY OWN I DONT MIND SHARING 
+YOU CAN ALSO REQUEST SOURCES AND  MAYBE A LITTLE HELP FROM 
+THE OTHER MODEL MAKERS  LIKE ANDREW IN RUSSIA OR EA IN ITALIA 
+{LOOK ON THE VSM USERS SITE FOR CONTACT DETAILS}
+
+
+IF YOU NEED  ONE OF THE CLASS'S  FINISHED QUICKLY THATS WAY DOWN THE LIST 
+I DONT MIND TO ADJUST THE PRIORITY OF  WORK SHEDULE
