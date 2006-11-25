@@ -1,0 +1,97 @@
+I HAVE COMPLETED THE MUX SOUT DATA
+BUT I CANT TEST IT IN PIC LAND
+TILL I UPGRADE THE PICC DRIVER FOR THIS CHIP 
+
+METHOD
+
+COPY  THE LIBS TO THE LIBRARY THE MODELS TO THE MODELS FOLDER
+IN YOUR PROTEUS INSTALATION  
+
+AND RUN THE TEST DESIGN IN the pic design and source code folder
+youll find the c code made in picc there also
+
+
+ill get time to alter the picc driver soon
+and add a routine to get the needed extra clocks pulses and the ssb bit 
+sent as bit b0 avalible for use...
+
+but if someone see's an easy way to do it ill test the dll further
+send to me simeon @ vsmlibs@yahoo.co.uk
+
+
+INSTALL
+-------
+MOVE A COPY OF THE MODELS LIBRARYS FOLDERS INTO THE LABCENTER PROTEUS ROOT
+C:\Program Files\Labcenter Electronics\Proteus 6 Professional    {OR TO THE LITE PATH}
+
+TO 'ADD' TO THESE FOLDERS or set paths from proteus to this folders models and libarys folders
+and save the preferances {also in isis system menu } then restart isis to complete install
+you should now be able to place them as chips and run
+
+location of The datasheet's archive for made models and planned additions to this dll
+
+http://uk.geocities.com/mayaka2001/DALLAS_DPOT_DATASHEETS.zip
+
+
+ 
+TYPES ADDITIONS TO DATE
+-----------------------
+
+DALLAS TYPE DS1267 {SAME AS 1868 BUT LOW POWER}
+DALLAS TYPE DS1666-DS16665  TYPES {UPDOWN TYPES}
+DALLAS TYPE DS1804 has nv ram and eeprom saves counter and runs random decider
+DALLAS TYPE DS1867 MUCH THE SAME AS 1868 BUT HAS EEPROM PERSISTANT MEMORY
+DALLAS TYPE DS1868 completed
+
+
+VERSION INFO
+------------
+
+DALLAS TYPE DS1267 		v1.04
+DALLAS TYPE DS1666-DS16665 	v1.04 
+DALLAS TYPE DS1804 		v1.04
+DALLAS TYPE DS1867 		v1.04
+DALLAS TYPE DS1868 		v1.04
+
+
+
+Bugs & error's.. Found & Fixed 
+-----------------------------
+tidy'd and remade libs and models updated designs and models and corrected some wrong values 
+still to work a little on the pot tapers 
+
+
+
+added the same system to 1867 for eeprom fail
+fixed nv save and fail system DS1804I
+model now works very well indeed 
+taking a random value between 0 and 65535 
+adding to the 0xC350 {50000 guaranteed flashes}
+each time the simulation is run 
+just like a real chip each time its powered the eeprom 
+will fail at a different max of flash's amount
+removed mangled class names from dll 
+updated dll to re-orient classes
+tidy libs models designs
+rebuilt all models and the dll   
+fixed a few of the demo / timing  designs to work
+fixed all internal lib parts to call the right models types for some types this was wrong
+rebuilt spice sections to optimise 
+fixed 1666 end stops {still to add taper resistor...}
+reset popup height ds1666
+found a syntax error in the pin qualifiers
+fixed voltage level on vcc pin triggered save eeprom event for ds1867
+improved the timings all over...
+compressed the lib to a dallas.dll 
+with two models classes inside
+the 1267 & 1868 use a common class with only submodel differances
+and the DS1267 is a ultra low power type
+wrong makers name in copyrights message 
+found a timing issue with ssb bit not appearing on cout absmin test
+at the right time  this is fixed
+found pots not centered properly as per settings of F7 F7
+showed a 20R error this is fixed and the vpots now center properly
+
+
+PLEASE REPORT ANY ISSUE YOU HAVE WITH IT AND CANT SOLVE
+MALTO:VSMLIBS@YAHOO.CO.UK

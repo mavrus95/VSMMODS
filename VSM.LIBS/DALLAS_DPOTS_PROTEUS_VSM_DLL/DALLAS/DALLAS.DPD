@@ -1,0 +1,17 @@
+# Digital Mars IDDE gen.  .dpd file. V: 7200
+dallas.obj: \
+	dallas.cpp \
+	DALLAS.HPP \
+	..\..\..\..\..\..\..\DM\include\win32\pshpack4.h \
+	..\..\..\..\..\..\..\DM\include\win32\pshpack2.h \
+	..\..\..\..\..\..\..\DM\include\win32\poppack.h \
+	..\..\..\..\..\..\..\DM\include\win32\rpc.h \
+	..\..\..\..\..\..\..\DM\include\win32\rpcndr.h \
+	..\..\..\..\..\..\..\DM\include\win32\windows.h \
+	..\..\..\..\..\..\..\DM\include\win32\ole2.h \
+	..\..\..\..\..\..\..\DM\include\win32\wtypes.h \
+	..\..\..\..\..\..\..\DM\include\win32\unknwn.h \
+	..\..\..\..\..\..\..\DM\include\win32\objidl.h \
+	"..\..\..\..\..\..\..\Program Files\Labcenter Electronics\Proteus 6 Professional\INCLUDE\vsm.hpp" \
+	"..\..\..\..\..\..\..\Program Files\Labcenter Electronics\Proteus 6 Professional\INCLUDE\vdm.hpp" \
+	"..\..\..\..\..\..\..\Program Files\Labcenter Electronics\Proteus 6 Professional\INCLUDE\DEVKEYS.H" 
