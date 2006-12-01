@@ -1,0 +1,35 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: LCD19264A - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP75.tmp" with contents
+[
+/nologo /MTd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /D "_USRDLL" /D "LCD19264A_EXPORTS" /FR"Debug/" /Fp"Debug/LCD19264A.pch" /YX /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"E:\proteus 6.9\½Ì³Ì\model\LCD19264A_VC\LCD19264A.CPP"
+]
+Creating command line "cl.exe @C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP75.tmp" 
+Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP76.tmp" with contents
+[
+kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /dll /incremental:yes /pdb:"Debug/LCD19264A.pdb" /debug /machine:I386 /out:"../LCD19264A.dll" /implib:"Debug/LCD19264A.lib" /pdbtype:sept 
+".\Debug\LCD19264A.OBJ"
+]
+Creating command line "link.exe @C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP76.tmp"
+<h3>Output Window</h3>
+Compiling...
+LCD19264A.CPP
+Linking...
+Creating command line "bscmake.exe /nologo /o"Debug/LCD19264A.bsc"  ".\Debug\LCD19264A.SBR""
+Creating browse info file...
+<h3>Output Window</h3>
+
+
+
+<h3>Results</h3>
+LCD19264A.dll - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

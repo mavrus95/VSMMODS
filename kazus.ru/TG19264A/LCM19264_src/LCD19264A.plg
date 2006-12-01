@@ -1,0 +1,44 @@
+<html>
+<body>
+<pre>
+<h1>µVision3 Build Log</h1>
+<h2>Project:</h2>
+E:\proteus 6.9\½Ì³Ì\model\LCM19264_src\LCD19264A.uv2
+Project File Date:  09/01/2006
+
+<h2>Output:</h2>
+Build target 'Target 1'
+assembling TG19264.ASM...
+TG19264.ASM(602): warning A41: MISSING 'END' STATEMENT
+linking...
+Program Size: data=8.0 xdata=0 code=2954
+creating hex file from "LCD19264A"...
+"LCD19264A" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+assembling TG19264.ASM...
+TG19264.ASM(602): warning A41: MISSING 'END' STATEMENT
+linking...
+Program Size: data=8.0 xdata=0 code=2956
+creating hex file from "LCD19264A"...
+"LCD19264A" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+"LCD19264A" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+assembling TG19264.ASM...
+TG19264.ASM(524): error A9: SYNTAX ERROR
+TG19264.ASM(628): warning A41: MISSING 'END' STATEMENT
+Target not created
+Build target 'Target 1'
+assembling TG19264.ASM...
+TG19264.ASM(628): warning A41: MISSING 'END' STATEMENT
+linking...
+Program Size: data=8.0 xdata=0 code=2978
+creating hex file from "LCD19264A"...
+"LCD19264A" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+assembling TG19264.ASM...
+TG19264.ASM(568): warning A41: MISSING 'END' STATEMENT
+linking...
+Program Size: data=8.0 xdata=0 code=2949
+creating hex file from "LCD19264A"...
+"LCD19264A" - 0 Error(s), 1 Warning(s).

@@ -1,0 +1,318 @@
+A51 MACRO ASSEMBLER  MAIN                                                                 09/01/2006 19:49:31 PAGE     1
+
+
+MACRO ASSEMBLER A51 V7.10
+NO OBJECT MODULE REQUESTED
+ASSEMBLER INVOKED BY: C:\Program Files\study_tools\Keil\C51\BIN\A51.EXE MAIN.ASM SET(SMALL) DEBUG EP
+
+LOC  OBJ            LINE     SOURCE
+
+                       1     ;********************************************************************************
+                       2     ;* ÎÄ¼þÃû£ºMAIN.ASM
+                       3     ;* ¹¦  ÄÜ£ºÏîÄ¿²âÊÔÖ÷³ÌÐò
+                       4     ;* ×÷  Õß£ºSZN
+                       5     ;* ÈÕ  ÆÚ£º2005.07.8
+                       6     ;* ±¸  ×¢£ºÎªÁË·½±ãC51µÄµ÷ÓÃ£¬Èë¿Ú²ÎÊ¸ÄÎª±ê×¼A51µÄÐÎÊ½
+                       7     ;*********************************************************************************
+                       8     
+                       9     ;---¶Ë¿ÚµØÖ·¶¨Òå----------------
+  A000                10     IN244 EQU 0A000H  ;37FFH
+  A000                11     OUT5741  EQU  0A000H
+  6000                12     OUT5742  EQU  6000H
+  E000                13     OUT5743  EQU  0E000H
+  A000                14     DATA_LCM EQU  OUT5741
+  0028                15     LCMCTRL EQU    28H            ;¿ØÖÆ¶Ë¿ÚµÄÖµ
+  0040                16     DI      EQU    LCMCTRL.0
+  0041                17     RW      EQU    LCMCTRL.1
+  0042                18     ELCM    EQU    LCMCTRL.2
+  0043                19     CS1     EQU    LCMCTRL.3
+  0044                20     CS2     EQU    LCMCTRL.4
+  0045                21     CS3     EQU    LCMCTRL.5
+                      22     
+                      23     ;---È«¾Ö±äÁ¿¶¨Òå----------------
+  0000                24     HKEY      EQU  00H   ;ÓÐ¼ü°´ÏÂ±êÖ¾
+                      25     ;HKEYP     BIT  02H   ;°´¼üÒÑ´¦Àí±êÖ¾
+  0040                26     XKEYCODE   EQU  0040H   ;¼üÂë
+  0040                27     COUNT      EQU  40H   ;FOR TEST
+                      28     
+  0008                29     F_50MS     EQU  08H   ;50msµ½´ï±êÖ¾
+  0009                30     F_100MS    EQU  09H   ;100msµ½´ï±êÖ¾
+  000A                31     F_200MS    EQU  0aH   ;200msµ½´ï±êÖ¾
+  000B                32     F_500MS    EQU  0bH   ;500msµ½´ï±êÖ¾
+  000C                33     F_1S       EQU  0cH   ;1sµ½´ï±êÖ¾
+  0041                34     INT_COUNT  EQU  41H   ;T0ÖÐ¶Ï´ÎÊ
+                      35     
+  0030                36     XPOS    EQU     30H             ;X×ø±ê
+  0031                37     YPOS    EQU     31H             ;Y×ø±ê
+                      38     
+                      39     ;---³£Á¿¶¨Òå----------------
+  0040                40     PD1      EQU    40H             ;Ã¿Ò»¸ö·ÖÇø¿í64µã(Òº¾§Æ¬·ÖÇø²ÎÊ)
+                      41     
+0000                  42            ORG 0000H
+0000 020040           43            LJMP MAIN
+                      44            ;ORG 0003H
+                      45            ;LJMP ISR_INT0
+000B                  46            ORG 000BH
+000B 0200A1           47            LJMP ISR_T0
+                      48            ;ORG 0013H
+                      49            ;LJMP ISR_INT1
+                      50            ;ORG 001BH
+                      51            ;LJMP ISR_T1
+                      52            ;ORG 0023H
+                      53            ;LJMP ISR_SERIAL
+                      54     
+0040                  55            ORG 0040H
+0040 758160           56     MAIN:  MOV SP,#60H
+0043                  57     K1:    ;LCALL KEY_INIT      ;KEY INIT
+                      58            ;LCALL TIMER0_INIT   ;TIMER0 INIT
+A51 MACRO ASSEMBLER  MAIN                                                                 09/01/2006 19:49:31 PAGE     2
+
+0043                  59            LCALL    LCDRESET        ;       void  lcdreset(void);
+*** _________________________________________^
+*** ERROR #A45 IN 59 (MAIN.ASM, LINE 59): UNDEFINED SYMBOL (PASS-2)
+0046 7F00             60            MOV      R7,#0       ;XPOS
+0048 7D00             61            MOV      R5,#0       ;YPOS
+004A                  62            MOV      DPTR,#STRING1   ;       uchar *p = *string1;
+*** _______________________________________________^
+*** ERROR #A45 IN 62 (MAIN.ASM, LINE 62): UNDEFINED SYMBOL (PASS-2)
+004D AB83             63            MOV      R3,DPH
+004F AC82             64            MOV      R4,DPL
+0051                  65            LCALL    _PUTSTR         ;       void  putstr(uchar,uchar,uchar *p);
+*** _________________________________________^
+*** ERROR #A45 IN 65 (MAIN.ASM, LINE 65): UNDEFINED SYMBOL (PASS-2)
+0054 7F00             66            MOV      R7,#0       ;XPOS
+0056 7D02             67            MOV      R5,#2       ;YPOS
+0058                  68            MOV      DPTR,#STRING2   ;       uchar *p = *string2;
+*** _______________________________________________^
+*** ERROR #A45 IN 68 (MAIN.ASM, LINE 68): UNDEFINED SYMBOL (PASS-2)
+005B AB83             69            MOV      R3,DPH
+005D AC82             70            MOV      R4,DPL
+005F                  71            LCALL    _PUTSTR         ;       void  putatr(uchar,uchar,uchar *p);
+*** _________________________________________^
+*** ERROR #A45 IN 71 (MAIN.ASM, LINE 71): UNDEFINED SYMBOL (PASS-2)
+                      72     
+0062 7F00             73            MOV      R7,#0
+0064                  74            LCALL    _LCDFILL
+*** _________________________________________^
+*** ERROR #A45 IN 74 (MAIN.ASM, LINE 74): UNDEFINED SYMBOL (PASS-2)
+0067 7E00             75            MOV      R6,#0
+0069 7F00             76            MOV      R7,#0
+006B 7C30             77            MOV      R4,#30H
+006D 7D03             78            MOV      R5,#03H
+006F                  79            MOV      DPTR,#TUDOT2 ;#TUKDOT
+*** _______________________________________________^
+*** ERROR #A45 IN 79 (MAIN.ASM, LINE 79): UNDEFINED SYMBOL (PASS-2)
+0072 AA83             80            MOV      R2,DPH
+0074 AB82             81            MOV      R3,DPL
+0076                  82            LCALL    _DispIcon32
+*** _________________________________________^
+*** ERROR #A45 IN 82 (MAIN.ASM, LINE 82): UNDEFINED SYMBOL (PASS-2)
+0079 0179             83            AJMP     $               ;      while(1);
+                      84                                     ;   }
+                      85     
+                      86     ;********************************************************************
+                      87     ;¹¦ÄÜ£º¶¨Ê±Æ÷0ÖÐ¶Ï³õÊ¼»¯×Ó³ÌÐò
+                      88     ;±êºÅ£ºTIMER0_INIT
+                      89     ;Ê¹ÓÃÈ«¾Ö±äÁ¿£ºF_50MS, F_100MS, F_200MS, F_500MS, F_1S, INT_COUNT
+                      90     ;********************************************************************
+007B                  91     TIMER0_INIT:
+007B C2AF             92        CLR EA   ;CLOSE
+007D C28C             93        CLR TR0  ;STOP
+007F E589             94        MOV A,TMOD
+0081 54F0             95        ANL A,#0F0H
+0083 4401             96        ORL A,#01H   ;timer0,¶¨Ê±,·½Ê½1
+0085 F589             97        MOV TMOD,A
+0087 758C4C           98        MOV TH0,#4CH
+008A 758A1B           99        MOV TL0,#1BH
+008D D2A9            100        SETB ET0    ;¶¨Ê±ÖÐ¶ÏÔÊÐí
+008F D2AF            101        SETB EA
+0091 D28C            102        SETB TR0 ;START
+0093 C208            103        CLR F_50MS
+0095 C209            104        CLR F_100MS
+0097 C20A            105        CLR F_200MS
+0099 C20B            106        CLR F_500MS
+009B C20C            107        CLR F_1S
+009D 754100          108        MOV INT_COUNT,#0   ;T0ÖÐ¶Ï´ÎÊ
+A51 MACRO ASSEMBLER  MAIN                                                                 09/01/2006 19:49:31 PAGE     3
+
+00A0 22              109        RET
+                     110     
+                     111     ;********************************************************************
+                     112     ;¹¦ÄÜ£º¶¨Ê±Æ÷0ÖÐ¶Ï·þÎñ³ÌÐò
+                     113     ;±êºÅ£ºISR_T0
+                     114     ;×Ó³ÌÐòµ÷ÓÃ£ºKEYIN
+                     115     ;Ê¹ÓÃÈ«¾Ö±äÁ¿£ºF_50MS, F_100MS, F_200MS, F_500MS, F_1S, INT_COUNT
+                     116     ;********************************************************************
+00A1                 117     ISR_T0:
+00A1                 118        PUSH A
+*** _________________________________^
+*** ERROR #A22 IN 118 (MAIN.ASM, LINE 118): EXPRESSION TYPE DOES NOT MATCH INSTRUCTION
+00A1 C0F0            119        PUSH B
+                     120     ;--------ÖØÐÂ¼ÓÔØ¼ÆÊÖµ-------------------
+00A3 C28C            121        CLR TR0  ;STOP
+00A5 758C4C          122        MOV TH0,#4CH
+00A8 758A1B          123        MOV TL0,#1BH
+00AB D28C            124        SETB TR0 ;START
+                     125     ;--------ÖÃÊ±¼ä±êÖ¾Î»ºÍÏàÓ¦´¦Àí------------
+00AD 0541            126        INC INT_COUNT
+00AF D208            127        SETB F_50MS
+00B1 E541            128        MOV A,INT_COUNT
+00B3 75F002          129        MOV B,#2
+00B6 84              130        DIV AB
+00B7 E5F0            131        MOV A,B
+00B9 7002            132        JNZ IT
+00BB D209            133        SETB F_100MS
+00BD                 134     IT:
+00BD E541            135        MOV A,INT_COUNT
+00BF 75F004          136        MOV B,#4
+00C2 84              137        DIV AB
+00C3 E5F0            138        MOV A,B
+00C5 7002            139        JNZ IT2
+00C7 D20A            140        SETB F_200MS
+                     141        ;LCALL KEYIN  ;¼üÅÌÉ¨Ãè
+00C9                 142     IT2:
+00C9 E541            143        MOV A,INT_COUNT
+00CB 75F00A          144        MOV B,#10
+00CE 84              145        DIV AB
+00CF E5F0            146        MOV A,B
+00D1 7002            147        JNZ IT3
+00D3 D20B            148        SETB F_500MS
+00D5                 149     IT3:
+00D5 E541            150        MOV A,INT_COUNT
+00D7 75F014          151        MOV B,#20
+00DA 84              152        DIV AB
+00DB E5F0            153        MOV A,B
+00DD 7002            154        JNZ T0_END
+00DF D20C            155        SETB F_1S
+                     156     
+00E1                 157     T0_END:
+00E1 D0F0            158        POP B
+00E3                 159        POP A
+*** ________________________________^
+*** ERROR #A22 IN 159 (MAIN.ASM, LINE 159): EXPRESSION TYPE DOES NOT MATCH INSTRUCTION
+00E3 32              160        RETI
+                     161     
+                     162     ;********************************************************************
+                     163     ;¹¦ÄÜ£ºÑÓÊ±Xms×Ó³ÌÐò          /***IN:R7****(char)*************/
+                     164     ;±êºÅ£º    (1)ASM: _DelayXms       (2) C : DelayXms(unsigned char)
+                     165     ;Èë¿Ú²ÎÊ£º(1)ASM: R7 (ÑÓÊ±R7ºÁÃë)
+                     166     ;³ö¿Ú²ÎÊ£ºÎÞ
+                     167     ;×Ó³ÌÐòµ÷ÓÃ£ºÎÞ
+                     168     ;¶ÑÕ»ÐèÇó£º4 ×Ö½Ú
+                     169     ;Ó°Ïì×ÊÔ´£ºR7
+                     170     ;********************************************************************
+A51 MACRO ASSEMBLER  MAIN                                                                 09/01/2006 19:49:31 PAGE     4
+
+00E4                 171     _DelayXms:
+00E4                 172            PUSH A
+*** _____________________________________^
+*** ERROR #A22 IN 172 (MAIN.ASM, LINE 172): EXPRESSION TYPE DOES NOT MATCH INSTRUCTION
+00E4 C0F0            173            PUSH B
+00E6 7402            174            MOV A,#02H
+00E8 75F0C7          175            MOV B,#0C7H
+00EB D5F0FD          176     AG1:   DJNZ B,AG1
+00EE 14              177            DEC A
+00EF 70FA            178            JNZ AG1
+00F1 DFF1            179            DJNZ R7,_DelayXms
+00F3 D0F0            180            POP B
+00F5                 181            POP A
+*** ____________________________________^
+*** ERROR #A22 IN 181 (MAIN.ASM, LINE 181): EXPRESSION TYPE DOES NOT MATCH INSTRUCTION
+00F5 22              182            RET
+                     183     
+                     184     ;********************************************************************
+                     185     ;¹¦ÄÜ£ºÑÓÊ±10us×Ó³ÌÐò
+                     186     ;±êºÅ£º    (1)ASM: Delay10us       (2) C : Delay10us(void)
+                     187     ;Èë¿Ú²ÎÊ£ºÎÞ
+                     188     ;³ö¿Ú²ÎÊ£ºÎÞ
+                     189     ;×Ó³ÌÐòµ÷ÓÃ£ºÎÞ
+                     190     ;¶ÑÕ»ÐèÇó£º2 ×Ö½Ú
+                     191     ;Ó°Ïì×ÊÔ´£ºÎÞ
+                     192     ;********************************************************************
+00F6                 193     Delay10us:
+00F6 00              194            NOP
+00F7 00              195            NOP
+00F8 00              196            NOP
+00F9 00              197            NOP
+00FA 00              198            NOP
+00FB 00              199            NOP
+00FC 22              200            RET
+                     201     
+                     202     ;-----------------------------Ó¦ÓÃ³ÌÐòÅäÖÃ----------------------------------
+                     203     
+                     204            ;INCLUDE "KEYBOARD.ASM"   ;¼üÅÌ´¦Àí³ÌÐò
+                     205            INCLUDE "TG19264.ASM"    ;LCDÏÔÊ¾Ç¶¯³ÌÐò
+*** ________________________________^
+*** ERROR #A9 IN 205 (MAIN.ASM, LINE 205): SYNTAX ERROR
+                     206            INCLUDE "HZK16.ASM"      ;16*16ºº×ÖµãÕó×Ö¿â
+*** ________________________________^
+*** ERROR #A9 IN 206 (MAIN.ASM, LINE 206): SYNTAX ERROR
+                     207     
+                     208            END
+A51 MACRO ASSEMBLER  MAIN                                                                 09/01/2006 19:49:31 PAGE     5
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+AG1. . . . . . . .  C ADDR   00EBH   A   
+B. . . . . . . . .  D ADDR   00F0H   A   
+COUNT. . . . . . .  N NUMB   0040H   A   
+CS1. . . . . . . .  B ADDR   0028H.3 A   
+CS2. . . . . . . .  B ADDR   0028H.4 A   
+CS3. . . . . . . .  B ADDR   0028H.5 A   
+DATA_LCM . . . . .  N NUMB   A000H   A   
+DELAY10US. . . . .  C ADDR   00F6H   A   
+DI . . . . . . . .  B ADDR   0028H.0 A   
+DPH. . . . . . . .  D ADDR   0083H   A   
+DPL. . . . . . . .  D ADDR   0082H   A   
+EA . . . . . . . .  B ADDR   00A8H.7 A   
+ELCM . . . . . . .  B ADDR   0028H.2 A   
+ET0. . . . . . . .  B ADDR   00A8H.1 A   
+F_100MS. . . . . .  N NUMB   0009H   A   
+F_1S . . . . . . .  N NUMB   000CH   A   
+F_200MS. . . . . .  N NUMB   000AH   A   
+F_500MS. . . . . .  N NUMB   000BH   A   
+F_50MS . . . . . .  N NUMB   0008H   A   
+HKEY . . . . . . .  N NUMB   0000H   A   
+IN244. . . . . . .  N NUMB   A000H   A   
+INCLUDE. . . . . .    ----   -----       
+INT_COUNT. . . . .  N NUMB   0041H   A   
+ISR_T0 . . . . . .  C ADDR   00A1H   A   
+IT . . . . . . . .  C ADDR   00BDH   A   
+IT2. . . . . . . .  C ADDR   00C9H   A   
+IT3. . . . . . . .  C ADDR   00D5H   A   
+K1 . . . . . . . .  C ADDR   0043H   A   
+LCDRESET . . . . .    ----   -----       
+LCMCTRL. . . . . .  N NUMB   0028H   A   
+MAIN . . . . . . .  C ADDR   0040H   A   
+OUT5741. . . . . .  N NUMB   A000H   A   
+OUT5742. . . . . .  N NUMB   6000H   A   
+OUT5743. . . . . .  N NUMB   E000H   A   
+PD1. . . . . . . .  N NUMB   0040H   A   
+RW . . . . . . . .  B ADDR   0028H.1 A   
+SP . . . . . . . .  D ADDR   0081H   A   
+STRING1. . . . . .    ----   -----       
+STRING2. . . . . .    ----   -----       
+T0_END . . . . . .  C ADDR   00E1H   A   
+TH0. . . . . . . .  D ADDR   008CH   A   
+TIMER0_INIT. . . .  C ADDR   007BH   A   
+TL0. . . . . . . .  D ADDR   008AH   A   
+TMOD . . . . . . .  D ADDR   0089H   A   
+TR0. . . . . . . .  B ADDR   0088H.4 A   
+TUDOT2 . . . . . .    ----   -----       
+XKEYCODE . . . . .  N NUMB   0040H   A   
+XPOS . . . . . . .  N NUMB   0030H   A   
+YPOS . . . . . . .  N NUMB   0031H   A   
+_DELAYXMS. . . . .  C ADDR   00E4H   A   
+_DISPICON32. . . .    ----   -----       
+_LCDFILL . . . . .    ----   -----       
+_PUTSTR. . . . . .    ----   -----       
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 14 ERROR(S)
