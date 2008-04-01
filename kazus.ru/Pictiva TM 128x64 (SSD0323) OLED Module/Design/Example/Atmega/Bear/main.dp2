@@ -1,2 +1,0 @@
-main.o: C:/icc631/include/iom32v.h C:/icc631/include/macros.h C:/icc631/include/math.h C:\Work\Example\Design\Example\Source\Bear/def.h C:\Work\Example\Design\Example\Source\Bear/pins.h C:\Work\Example\Design\Example\Source\Bear/spi.h\
- C:\Work\Example\Design\Example\Source\Bear/oled.h C:\Work\Example\Design\Example\Source\Bear/images/bear.h C:\Work\Example\Design\Example\Source\Bear/images/dog.h
