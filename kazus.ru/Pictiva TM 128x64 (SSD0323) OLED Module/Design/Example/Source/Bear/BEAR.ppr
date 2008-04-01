@@ -1,0 +1,66 @@
+[Config]
+Relative path=1
+Compilator.FileName=
+Compilator.PSPar=
+Compilator.Log=
+Compilator.Run=
+Compilator.DefaultDir=
+Compilator.SaveAll=0
+Compilator.Capture=0
+Compilator.ParsLog=
+Compilator.HideOutput=0
+Prog1=
+Prog2=
+Prog3=
+Prog4=
+Prog5=
+DefaultDir=
+DefaultCPIndex=0
+LogtoEnd=1
+DontOpen=0
+FileFormat=0
+DocumentRoot=
+HTServer=
+[Project tree]
+BEAR
+	+BEAR
+		+images
+			images\bear.h
+			images\dog.h
+		def.h
+		main.c
+		oled.h
+		pins.h
+		spi.h
+[Open project files]
+0=def.h
+1=main.c
+2=oled.h
+3=pins.h
+4=spi.h
+5=images\bear.h
+6=images\dog.h
+[Selected Project Files]
+Main=
+Selected=main.c
+[def.h]
+TopLine=1
+Caret=1,10
+[main.c]
+TopLine=30
+Caret=15,52
+[oled.h]
+TopLine=97
+Caret=10,116
+[pins.h]
+TopLine=1
+Caret=9,11
+[spi.h]
+TopLine=102
+Caret=1,124
+[images\bear.h]
+TopLine=71
+Caret=7,71
+[images\dog.h]
+TopLine=4
+Caret=8,4
