@@ -158,4 +158,3 @@ CC1 OUT 4 3.978P
 .MODEL MOSP PMOS(VTO=-0.7 KP=100E-5)
 .MODEL DA D(IS=100E-14 N=1M)
 .ENDS ERRAMP2
-**************************************************
