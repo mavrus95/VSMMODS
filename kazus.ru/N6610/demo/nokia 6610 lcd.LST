@@ -1,0 +1,142 @@
+MPASM  5.03                  NOKIA 6610 LCD.C   11-6-2009  19:04:41         PAGE  1
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+Error[105]  : Cannot open file (Include File "htc.h" not found)
+                      00001 #include <htc.h>
+                      00002 
+                      00003 #ifndef _XTAL_FREQ
+                      00004         #define _XTAL_FREQ 20000000
+                      00005 #endif
+Warning[205]: Found directive in column 1. (__CONFIG)
+Error[131]  : Processor type is undefined
+                      00006 __CONFIG(HS & WDTDIS & PWRTEN & BOREN);;
+                      00007 
+Error[108]  : Illegal character (/)
+                      00008 //Philips PCF8833 Commands
+                      00009 #define LCD_NOP                 0x00    // no operation
+                      00010 #define LCD_CASET               0x2A    // column address set
+                      00011 #define LCD_PASET               0x2B    // page address set
+                      00012 #define LCD_RAMWR               0x2C    // memory write
+                      00013 
+                      00014 #define TCMD    0
+                      00015 #define TDATA   1
+                      00016 
+                      00017 #define BLUE        0x03
+                      00018 #define YELLOW      0xFC
+                      00019 #define RED         0XE0
+                      00020 #define GREEN       0X1C
+                      00021 #define BLACK       0X00
+                      00022 #define WHITE       0XFF
+                      00023 #define ORANGE      0XF8
+                      00024 
+                      00025 #define LCD_RESET       RC5
+                      00026 #define LCD_DATA        RC4
+                      00027 #define LCD_CLK         RC3
+                      00028 #define LCD_CS          RC2
+                      00029 
+Error[122]  : Illegal opcode (lcd_send)
+                      00030 void lcd_send(unsigned char lcd_byte, unsigned char DC);;
+Error[122]  : Illegal opcode (lcd_fill_area)
+                      00031 void lcd_fill_area(unsigned char x1, unsigned char x2, unsigned char y1, unsigned char y2, unsigned char
+                             color);;
+                      00032 
+Error[122]  : Illegal opcode (main)
+                      00033 void main(void)
+Error[108]  : Illegal character ({)
+                      00034 {
+Warning[207]: Found label after column 1. (unsigned)
+Error[122]  : Illegal opcode (long)
+                      00035         unsigned long i;
+Warning[207]: Found label after column 1. (TRISC)
+  00000000            00036         TRISC = 0x00;
+Warning[207]: Found label after column 1. (RC0)
+  00000000            00037         RC0 = 0;
+Warning[207]: Found label after column 1. (RC5)
+  00000000            00038         LCD_RESET = 0;
+Warning[207]: Found label after column 1. (RC2)
+MPASM  5.03                  NOKIA 6610 LCD.C   11-6-2009  19:04:41         PAGE  2
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+  00000001            00039         LCD_CS = 1;
+Warning[207]: Found label after column 1. (RC5)
+  00000001            00040         LCD_RESET = 1;
+Warning[207]: Found label after column 1. (RC2)
+  00000000            00041         LCD_CS = 0;
+                      00042         
+Error[108]  : Illegal character (/)
+                      00043         //for(i=0; i<27; i++)
+Error[108]  : Illegal character (/)
+                      00044                 //lcd_send(0b10101010, TDATA);;
+                      00045 
+Error[108]  : Illegal character (/)
+                      00046         //RC0 = 1;
+Error[108]  : Illegal character (/)
+                      00047         //while(1);;
+                      00048 
+Warning[207]: Found label after column 1. (lcd_fill_area)
+Error[108]  : Illegal character (()
+                      00049         lcd_fill_area(20, 30, 40, 50, BLUE);;
+Warning[207]: Found label after column 1. (lcd_fill_area)
+Error[108]  : Illegal character (()
+                      00050         lcd_fill_area(70, 80, 55, 70, YELLOW);;
+Warning[207]: Found label after column 1. (lcd_fill_area)
+Error[108]  : Illegal character (()
+                      00051         lcd_fill_area(50, 70, 20, 22, RED);;
+                      00052 
+Warning[207]: Found label after column 1. (RC0)
+  00000001            00053         RC0 = 1;
+                      00054 
+Error[129]  : Expected (ENDW)
+                      00055         while(1);;
+Error[129]  : Expected (END)
+Error[131]  : Processor type is undefined
+MPASM  5.03                  NOKIA 6610 LCD.C   11-6-2009  19:04:41         PAGE  3
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+BLACK                             0X00
+BLUE                              0x03
+GREEN                             0X1C
+LCD_CASET                         0x2A    // column address set
+LCD_CLK                           RC3
+LCD_CS                            RC2
+LCD_DATA                          RC4
+LCD_NOP                           0x00    // no operation
+LCD_PASET                         0x2B    // page address set
+LCD_RAMWR                         0x2C    // memory write
+LCD_RESET                         RC5
+ORANGE                            0XF8
+RC0                               00000001
+RC2                               00000000
+RC5                               00000001
+RED                               0XE0
+TCMD                              0
+TDATA                             1
+TRISC                             00000000
+WHITE                             0XFF
+YELLOW                            0xFC
+_XTAL_FREQ                        20000000
+
+
+MEMORY USAGE MAP ('X' = Used,  '-' = Unused)
+
+
+All other memory blocks unused.
+
+Program Memory Words Used:     0
+Program Memory Words Free:     1
+
+
+Errors   :    18
+Warnings :    12 reported,     0 suppressed
+Messages :     0 reported,     0 suppressed
+
+
