@@ -1,0 +1,78 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
+<PROJECT DESCRIPTION="Using an ATMega32 to control an SED1520 Graphical LCD Display">
+ <KEYWORDS>
+  <KEYWORD NAME="LCD Control"/>
+ </KEYWORDS>
+ <FILES>
+  <FILE GROUP="Source Files" NAME="bmp.c"/>
+  <FILE GROUP="Header Files" NAME="bmp.h"/>
+  <FILE GROUP="Design Files" NAME="EW12A03GLY.DSN"/>
+  <FILE GROUP="Source Files" NAME="fonts.c"/>
+  <FILE GROUP="Header Files" NAME="fonts.h"/>
+  <FILE GROUP="Source Files" NAME="main.c"/>
+  <FILE GROUP="Source Files" NAME="sed1520.c"/>
+  <FILE GROUP="Header Files" NAME="sed1520.h"/>
+ </FILES>
+ <CONFIGURATION TARGET="Debug" COMPILER="WinAVR" NAME="Debug">
+  <CONTROLLER FAMILY="AVR" CLOCK="1MHz" TYPE="ATmega32"/>
+  <FILE TOOL="LD" NAME="Debug.elf">
+   <FILE TOOL="CC" NAME="bmp.o">
+    <FILE NAME="bmp.c"/>
+   </FILE>
+   <FILE TOOL="CC" NAME="fonts.o">
+    <FILE NAME="fonts.c"/>
+   </FILE>
+   <FILE TOOL="CC" NAME="main.o">
+    <FILE NAME="main.c"/>
+   </FILE>
+   <FILE TOOL="CC" NAME="sed1520.o">
+    <FILE NAME="sed1520.c"/>
+   </FILE>
+  </FILE>
+  <FILE NAME="bmp.h"/>
+  <FILE NAME="EW12A03GLY.DSN"/>
+  <FILE NAME="fonts.h"/>
+  <FILE NAME="sed1520.h"/>
+  <OPTION TOOL="ASM" NAME="-mmcu=" VALUE="atmega32"/>
+  <OPTION TOOL="LD" NAME="-mmcu=" VALUE="atmega32"/>
+  <OPTION DEFAULT="1" TOOL="CC" NAME="-mmcu=" VALUE="atmega32"/>
+  <OPTION DEFAULT="1" TOOL="CC" NAME="-O" VALUE="1"/>
+  <OPTION TOOL="CC" NAME="-W" VALUE="all"/>
+  <OPTION TOOL="CC" NAME="-g" VALUE="dwarf-2"/>
+  <OPTION TOOL="CC" NAME="-f" VALUE="signed-char"/>
+  <OPTION DEFAULT="1" TOOL="CC" NAME="-MD"/>
+  <OPTION DEFAULT="1" TOOL="CC" NAME="-MP"/>
+  <OPTION TOOL="CC" NAME="-D" VALUE="F_CPU=%CLOCK%"/>
+ </CONFIGURATION>
+ <CONFIGURATION TARGET="Release" COMPILER="WinAVR" NAME="Release">
+  <CONTROLLER FAMILY="AVR" CLOCK="4MHz" TYPE="ATmega32"/>
+  <FILE TOOL="LD">
+   <FILE TOOL="CC">
+    <FILE NAME="bmp.c"/>
+   </FILE>
+   <FILE TOOL="CC">
+    <FILE NAME="fonts.c"/>
+   </FILE>
+   <FILE TOOL="CC">
+    <FILE NAME="main.c"/>
+   </FILE>
+   <FILE TOOL="CC">
+    <FILE NAME="sed1520.c"/>
+   </FILE>
+  </FILE>
+  <FILE NAME="bmp.h"/>
+  <FILE NAME="EW12A03GLY.DSN"/>
+  <FILE NAME="fonts.h"/>
+  <FILE NAME="sed1520.h"/>
+  <OPTION TOOL="ASM" NAME="-mmcu=" VALUE="atmega32"/>
+  <OPTION TOOL="LD" NAME="-mmcu=" VALUE="atmega32"/>
+  <OPTION TOOL="CC" NAME="-mmcu=" VALUE="atmega32"/>
+  <OPTION TOOL="CC" NAME="-O" VALUE="s"/>
+  <OPTION TOOL="CC" NAME="-W" VALUE="all"/>
+  <OPTION TOOL="CC" NAME="-g" VALUE="dwarf-2"/>
+  <OPTION TOOL="CC" NAME="-f" VALUE="signed-char"/>
+  <OPTION TOOL="CC" NAME="-MD"/>
+  <OPTION TOOL="CC" NAME="-MP"/>
+  <OPTION TOOL="CC" NAME="-D" VALUE="F_CPU=%CLOCK%"/>
+ </CONFIGURATION>
+</PROJECT>
