@@ -29,4 +29,3 @@
 .MODEL DX  D(IS=800.0E-18)
 *
 .ENDS
-
