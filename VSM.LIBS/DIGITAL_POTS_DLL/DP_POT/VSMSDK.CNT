@@ -1,0 +1,249 @@
+:Base VSMSDK.hlp
+:Index Model Parameters=MODELS.HLP
+:Link MODELS.HLP
+1 GENERAL INFORMATION
+2 Introduction=VSMSDK
+2 How the SPICE Simulator Works=HOW_SPICE_WORKS
+2 How the DSIM Simulator Works=HOW_DSIM_WORKS
+2 How Mixed Mode Simulation Works=HOW_MIXED_MODE_WORKS
+1 TYPES OF MODEL
+2 Overiew=TYPES_OF_MODEL
+2 Simulator Primitive Models=Simulator_Primitives
+2 Schematic Models=Schematic_Models
+2 SPICE Models=SPICE_Models
+2 VSM Models=VSM_Models
+1 ANALOGUE MODELLING TUTORIAL
+2 Introduction=AMT_INTRODUCTION
+2 Setting Up the Test Jig=AMT_TEST_JIG
+2 Modelling the Coil=AMT_MODELLING_COIL
+2 Overview of the Coil Circuit=AMT_COIL_CIRCUIT
+2 Modelling the Switch=AMT_MODELLING_SWITCH
+2 Overview of the Switch Circuit=AMT_SWITCH_CIRCUIT
+2 Compiling and Testing the Model=AMT_COMPILING
+2 Using the Relay Model=AMT_USING_MODEL
+1 DIGITAL MODELLING TUTORIAL
+2 Introduction=DMT_INTRODUCTION
+2 The 74123 Monostable Multivibrator=DMT_74123_MONOSTABLE
+2 Setting up the Test Jig=DMT_TEST_JIG
+2 Entering the Equivalent Circuit=DMT_ENTERING_CIRCUIT
+2 Overview of the Equivalent Circuit=DMT_OVERVIEW_OF_CIRCUIT
+2 Testing and Compiling the Model=DMT_COMPILING
+2 Using the 74123 Model=DMT_USING_MODEL
+1 MIXED MODE MODELLING TUTORIAL
+2 Introduction=MMT_Introduction
+2 Setting Up the Test Jig=MMT_Test_Jig
+2 Block Diagram of the 555=MMT_Block_Diagram
+2 The Equivalent Circuit=MMT_Equivalent_Circuit
+2 Using the Model=MMT_Using_Model
+1 VSM MODELLING TUTORIAL
+2 Introduction=VMT_INTRODUCTION
+2 Creating the Voltmeter Library Part=VMT_LIBRARY_PART
+2 Property Definitions for the Voltmeter=VMT_PROPDEFS
+2 Active Model Settings for the Voltmeter=VMT_ACTIVE_MODEL
+2 Setting up the C++ Project=VMT_SETTINGUP
+2 The Header File=VMT_HEADER
+2 Model Construction and Licencing=VMT_CONSTRUCTION
+2 Initializing the Model=VMT_INITIALIZING
+2 Combined Graphical/Electrical Models=VMT_COMBINED_MODELS
+2 Drawing on the Schematic=VMT_COMBINED_MODELS
+2 Event Handler=VMT_EVENT_HANDLER
+1 ACTIVE COMPONENTS
+2 Introduction=CREATING_YOUR_OWN_ACTIVE_COMPONENTS
+2 Example Indicator - A Light Bulb=EXAMPLE_INDICATOR
+2 Example Actuator - An Active Switch=EXAMPLE_ACTUATOR
+2 Bitwise Indicators=BITWISE_INDICATORS
+2 Ganged Actuators=GANGED_ACTUATORS
+1 GENERIC PLD MODELLING
+2 PLD Support Models=PLD_MODELLING
+2 Fuse Expressions=PLD_FUSE_EXPRESSIONS
+2 JEDEC Files=PLD_JEDEC_FILES
+:include MODELS.CNT
+1 VSM API REFERENCE
+2 Architectural Overview=vsmapi_overview
+2 Microprocessor Modelling=VSMAPI_Microprocessor_Interface
+2 Model Construction and Destruction
+3 Overview=VSMAPI_Model_Construction
+3 IACTIVEMODEL *createactivemodel (CHAR *device, ILICENCESERVER *ils)=VSMAPI_createactivemodel
+3 VOID deleteactivemodel (IACTIVEMODEL *)=VSMAPI_deleteactivemodel
+3 ISPICEMODEL *createspicemodel (CHAR *device, ILICENCESERVER *ils)=VSMAPI_createspicemodel
+3 VOID deletespicemodel (ISPICEMODEL *)=VSMAPI_deletespicemodel
+3 IDSIMMODEL *createdsimmodel (CHAR *device, ILICENCESERVER *ils)=VSMAPI_createdsimmodel
+3 VOID deletedsimmodel (IDSIMMODEL *)=VSMAPI_deletedsimmodel
+3 IMIXEDMODEL *createmixedmodel (CHAR *device, ILICENCESERVER *ils)=VSMAPI_createmixedmodel
+3 VOID deletemixedmodel (IMIXEDMODEL *)=VSMAPI_deletemixedmodel
+2 Licencing Interface
+3 Overview=VSMAPI_Licencing_Interface
+3 Obtaining Product IDs for your Models=VSMAPI_Product_IDs
+3 Authorizing a Model=ILICENCESERVER_authorize
+2 Graphical Modelling Interface
+3 Overview=VSMAPI_Graphical_Modelling_Interface
+3 Class ICOMPONENT
+4 Overview=Class_ICOMPONENT
+4 CHAR *getprop (CHAR *name)=ICOMPONENT_getprop
+4 CHAR *getproptext (VOID)=ICOMPONENT_getproptext
+4 VOID addprop (CHAR *propname, CHAR *item, WORD hflags)=ICOMPONENT_addprop
+4 VOID delprop (CHAR *propname)=ICOMPONENT_delprop
+4 VOID setproptext (CHAR *text)=ICOMPONENT_setproptext
+4 BOOL setstate (ACTIVESTATE state)=ICOMPONENT_setstate
+4 ACTIVESTATE getstate (INT element, ACTIVEDATA *data)=ICOMPONENT_getstate
+4 VOID setdrawscale (INT ppi)=ICOMPONENT_setdrawscale
+4 HDC  begincache (BOX &area)=ICOMPONENT_begincache
+4 VOID endcache (VOID)=ICOMPONENT_endcache
+4 VOID repaint (BOOL erase)=ICOMPONENT_repaint
+4 HGFXSTYLE creategfxstyle (CHAR *name)=ICOMPONENT_creategfxstyle
+4 VOID selectgfxstyle (HGFXSTYLE style)=ICOMPONENT_selectgfxstyle
+4 VOID setpenwidth (INT w)=ICOMPONENT_setpenwidth
+4 VOID setpencolour (COLOUR c)=ICOMPONENT_setpencolour
+4 VOID setbrushcolour (COLOUR c)=ICOMPONENT_setbrushcolour
+4 VOID drawline (INT x1, INT y1, INT x2, INT y2)=ICOMPONENT_drawline
+4 VOID drawbox (INT x1, INT y1, INT x2, INT y2)=ICOMPONENT_drawbox
+4 VOID drawcircle (INT x, INT y, INT radius)=ICOMPONENT_drawcircle
+4 VOID drawbezier (POINT *p, INT numpoints)=ICOMPONENT_drawbezier
+4 VOID drawpolyline (POINT *p, INT numpoints)=ICOMPONENT_drawpolyline
+4 VOID drawpolygon (POINT *p, INT numpoints)=ICOMPONENT_drawpolygon
+4 VOID drawsymbol (INT symbol)=ICOMPONENT_drawsymbol
+4 VOID drawstate (ACTIVESTATE state)=ICOMPONENT_drawstate
+4 VOID getsymbolarea (INT symbol, BOX *area)=ICOMPONENT_getsymbolarea
+4 BOOL getmarker (CHAR *name, POINT *pos INT *rot, INT *mir)=ICOMPONENT_getmarker; =ICOMPONENT_getmarker
+4 HTEXTSTYLE createtextstyle (CHAR *name)=ICOMPONENT_createtextstyle
+4 VOID selecttextstyle (HTEXTSTYLE style)=ICOMPONENT_selecttextstyle
+4 VOID settextfont (CHAR *name)=ICOMPONENT_settextfont
+4 VOID settextsize (INT h)=ICOMPONENT_settextsize
+4 VOID setbold (BOOL f)=ICOMPONENT_setbold
+4 VOID setitalic (BOOL f)=ICOMPONENT_setitalic
+4 VOID setunderline (BOOL f)=ICOMPONENT_setunderline
+4 VOID settextcolour (COLOUR c)=ICOMPONENT_settextcolour
+4 VOID drawtext (INT x, INT y, INT rot, INT jflags, CHAR *text, ...)=ICOMPONENT_drawtext
+4 IPOPUP *createpopup (CREATEPOPUPSTRUCT *cps)=ICOMPONENT_createpopup
+4 VOID deletepopup (POPUPID id)=ICOMPONENT_deletepopup
+3 Class IACTIVEMODEL
+4 Overview=Class_IACTIVEMODEL
+4 VOID initialize (ICOMPONENT *cpt)=IACTIVEMODEL_initialize
+4 ISPICEMODEL *getspicemodel (CHAR *primitive)=IACTIVEMODEL_getspicemodel
+4 IDSIMMODEL  *getdsimmodel (CHAR *primitive)=IACTIVEMODEL_getdsimmodel
+4 VOID plot (ACTIVESTATE state)=IACTIVEMODEL_plot
+4 VOID animate (INT element, ACTIVEDATA *newstate)=IACTIVEMODEL_animate
+4 BOOL actuate (WORD key, INT x, INT y, DWORD flags)=IACTIVEMODEL_actuate
+2 Electrical Modelling Interface
+3 Overview=VSMAPI_Electrical_Modelling
+3 Class IINSTANCE
+4 Overview=Class_IINSTANCE
+4 CHAR *id()=IINSTANCE_id
+4 CHAR *value()=IINSTANCE_value
+4 CHAR *getstrval(CHAR *name, CHAR *defval)=IINSTANCE_getstrval
+4 DOUBLE getnumval (CHAR *name, DOUBLE defval)=IINSTANCE_getnumval
+4 BOOL getboolval (CHAR *name, BOOL defval)=IINSTANCE_getboolval
+4 DWORD gethexval (CHAR *name, DWORD defval)=IINSTANCE_gethexval
+4 LONG getinitval (CHAR *name, LONG defval)=IINSTANCE_getinitval
+4 RELTIME getdelay (CHAR *name, RELTIME deftime)=IINSTANCE_getdelay
+4 IACTIVEMODEL *getactivemodel()=IINSTANCE_getactivemodel
+4 IINSTANCE *getinterfacemodel()=IINSTANCE_getinterfacemodel
+4 BOOL getmoddata (BYTE **data, DWORD *size)=IINSTANCE_getmoddata
+4 SPICENODE getspicenode (CHAR *namelist, BOOL required)=IINSTANCE_getspicenode
+4 IDSIMPIN *getdsimpin (CHAR *namelist, BOOL required)=IINSTANCE_getdsimpin
+4 IBUSPIN *getbuspin (CHAR *namestem, UINT base, UINT, width,  BOOL required)=IINSTANCE_getbuspin
+4 VOID log (CHAR *msg, ...)=IINSTANCE_log
+4 VOID warning (CHAR *msg, ...)=IINSTANCE_warning
+4 VOID error (CHAR *msg, ...)=IINSTANCE_error
+4 VOID fatal (CHAR *msg, ...)=IINSTANCE_fatal
+4 BOOL message (CHAR *msg, ...)=IINSTANCE_message
+4 IPOPUP *createpopup (CREATEPOPUPSTRUCT *cps)=IINSTANCE_createpopup
+4 VOID deletepopup (POPUPID id)=IINSTANCE_deletepopup
+3 Class ISPICECKT
+4 Overview=Class_ISPICECKT
+4 BOOL ismode (SPICEMODES mode)=ISPICECKT_ismode
+4 DOUBLE sysvar (SPICEVARS var)=ISPICECKT_sysvar
+4 DOUBLE &rhs (SPICENODE n)=ISPICECKT_rhs
+4 DOUBLE &rhsold (SPICENODE n)=ISPICECKT_rhsold
+4 DOUBLE &irhs (SPICENODE n)=ISPICECKT_irhs
+4 DOUBLE &irhsold (SPICENODE n)=ISPICECKT_irhsold
+4 SPICENODE newvoltnode (CHAR *partid, CHAR *nodename)=ISPICECKT_newvoltnode
+4 SPICENODE newcurnode (CHAR *partid, CHAR *nodename)=ISPICECKT_newcurnode
+4 DOUBLE *allocsmp (SPICENODE node1, SPICENODE node2)=ISPICECKT_allocsmp
+4 BOOL setbreak (REALTIME time)=ISPICECKT_setbreak
+4 VOID suspend (IINSTANCE *instance, CHAR *msg)=ISPICECKT_suspend
+4 INT allocvars (INT n)=ISPICECKT_allocvars
+4 DOUBLE &statevar (INT s, INT n)=ISPICECKT_statevar
+4 VOID integrate (DOUBLE *geq, DOUBLE *ceq, DOUBLE cap, INT statevars)=ISPICECKT_integrate
+4 VOID truncerr (INT statevars, DOUBLE *timestep)=ISPICECKT_truncerr
+3 Class ISPICEMODEL
+4 Overview=Class_ISPICEMODEL
+4 Coding SPICE Models in Proteus VSM=VSMAPI_SPICE_Models
+4 INT  isanalog (CHAR *pinname)=ISPICEMODEL_isanalog
+4 VOID setup (IINSTANCE *, ISPICECKT *)=ISPICEMODEL_setup
+4 VOID runctrl (RUNMODES mode)=ISPICEMODEL_runctrl
+4 VOID actuate (REALTIME time, ACTIVESTATE newstate)=ISPICEMODEL_actuate
+4 BOOL indicate (REALTIME time, ACTIVEDATA *newstate)=ISPICEMODEL_indicate
+4 VOID dcload (REALTIME time, SPICEMODES mode, DOUBLE *oldrhs, DOUBLE *newrhs)=ISPICEMODEL_dcload
+4 VOID acload (SPICEFREQ omega, DOUBLE *rhs, DOUBLE *irhs)=ISPICEMODEL_acload
+4 VOID trunc  (REALTIME time,  REALTIME *newtimestep)=ISPICEMODEL_trunc
+4 VOID accept (REALTIME time, DOUBLE *rhs)=ISPICEMODEL_accept
+3 Class IDSIMCKT
+4 Overview=Class_IDSIMCKT
+4 ABSTIME systime ()=IDSIMCKT_systime
+4 DOUBLE sysvar (DSIMVARS var)=IDSIMCKT_sysvar
+4 EVENT *setcallback (ABSTIME time, IDSIMMODEL *, EVENTID)=IDSIMCKT_setcallback
+4 EVENT *setcallbackex (ABSTIME time, IDSIMMODEL *, CALLBACKHANDLERFN, EVENTID)=IDSIMCKT_setcallbackex
+4 EVENT *setclockcallback (ABSTIME, RELTIME, IDSIMMODEL*, CALLBACKHANDLERFN, EVENTID)=IDSIMCKT_setclockcallback
+4 BOOL cancelcallback (EVENT *event, IDSIMMODEL *model)=IDSIMCKT_cancelcallback
+4 VOID setbreak (ABSTIME breaktime)=IDSIMCKT_setbreak
+4 VOID suspend (IINSTANCE *instance, CHAR *msg)=IDSIMCKT_suspend
+4 DSIMNODE newnode (CHAR *partid, CHAR *nodename)=IDSIMCKT_newnode
+4 IDSIMPIN *newpin (IINSTANCE *instance, DSIMNODE node, CHAR *name, DWORD flags)=IDSIMCKT_newpin
+3 Class IDSIMPIN
+4 Overview=Class_IDSIMPIN
+4 BOOL invert()=IDSIMPIN_invert
+4 STATE istate()=IDSIMPIN_istate
+4 BOOL issteady ()=IDSIMPIN_issteady
+4 INT  activity ()=IDSIMPIN_activity
+4 BOOL isactive ()=IDSIMPIN_isactive
+4 BOOL isinactive ()=IDSIMPIN_isinactive
+4 BOOL isposedge ()=IDSIMPIN_isposedge
+4 BOOL isnegedge ()=IDSIMPIN_isnegedge
+4 BOOL isedge ()=IDSIMPIN_isedge
+4 EVENT *setstate (ABSTIME time, RELTIME tlh, RELTIME thl, RELTIME tgq, STATE state=IDSIMPIN_setstate
+4 STATE getstate ()=IDSIMPIN_getstate
+4 VOID sethandler (IDSIMMODEL *model, PINHANDLERFN func)=IDSIMPIN_sethandler
+4 DSIMNODE getnode ()=IDSIMPIN_getnode
+3 Class IBUSPIN
+4 Overview=Class_IBUSPIN
+4 VOID settiming (RELTIME tlh, RELTIME thl, RELTIME tz)=IBUSPIN_settiming
+4 VOID setstates (STATE tstate, STATE fstate, STATE zstate)=IBUSPIN_setstates
+4 VOID sethandler (IDSIMMODEL *model, PINHANDLERFN *func)=IBUSPIN_sethandler
+4 VOID drivebusvalue (ABSTIME time, DWORD value)=IBUSPIN_drivebusvalue
+4 VOID drivetristate (ABSTIME time)=IBUSPIN_drivetristate
+4 VOID drivebitstate (ABSTIME time, UINT bit, STATE state)=IBUSPIN_drivebitstate
+4 DWORD getbusvalue ()=IBUSPIN_getbusvalue
+4 DWORD getbusdrive ()=IBUSPIN_getbusdrive
+4 STATE getbitstate (UINT bit)=IBUSPIN_getbitstate
+3 Class IDSIMMODEL
+4 Class IDSIMMODEL=Class_IDSIMMODEL
+4 INT isdigital (CHAR *pinname)=IDSIMMODEL_isdigital
+4 VOID setup (IINSTANCE *instance, IDSIMCKT *dsim)=IDSIMMODEL_setup
+4 VOID runctrl (RUNMODES mode)=ISPICEMODEL_runctrl
+4 VOID actuate (REALTIME time, ACTIVESTATE newstate)=ISPICEMODEL_actuate
+4 VOID indicate (REALTIME time, ACTIVEDATA *newstate)=ISPICEMODEL_indicate
+4 VOID simulate (ABSTIME time, DSIMMODES mode)=IDSIMMODEL_simulate
+4 VOID callback (ABSTIME time, EVENTID eventid)=IDSIMMODEL_callback
+2 Popup Window Interface
+3 Overview=VSMAPI_Popup_Window_Interface
+3 Class IUSERPOPUP
+4 Overview=Class_IUSERPOPUP
+4 CHAR *getprop (CHAR *key)=IUSERPOPUP_getprop
+4 VOID setprop (CHAR *key, CHAR *value)=IUSERPOPUP_setprop
+4 VOID setmsghlr (IMSGHLR *handler)=IUSERPOPUP_setmsghlr
+4 LRESULT callwindowproc (MESSAGE msg, WPARAM warg, LPARAM larg)=IUSERPOPUP_callwindowproc
+4 Class IMSGHLR=Class_IMSGHLR
+3 Class IDEBUGPOPUP
+4 Overview=Class_IDEBUGPOPUP
+4 VOID print (CHAR *msg, ...)=IDEBUGPOPUP_print
+4 VOID dump (const BYTE *ptr, UINT nbytes, UINT base)=IDEBUGPOPUP_dump
+3 Class ISTATUSPOPUP
+4 Overview=Class_ISTATUSPOPUP
+4 VOID print (INT col, INT row, COLOUR textcolour, CHAR *msg,  . . . )=ISTATUSPOPUP_print
+4 VOID clear (VOID)=ISTATUSPOPUP_clear
+4 VOID repaint (VOID)=ISTATUSPOPUP_repaint
+3 Class IMEMORYPOPUP
+4 Overview=Class_IMEMORYPOPUP
+4 VOID setmemory (ADDRESS baseaddr, BYTE *data, UINT nbytes)=IMEMORYPOPUP_setmemory
+4 VOID repaint (VOID)=IMEMORYPOPUP_repaint

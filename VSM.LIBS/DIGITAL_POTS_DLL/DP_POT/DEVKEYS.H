@@ -1,0 +1,4 @@
+#define LITE_KEY 0x88888888
+#define PRO_KEY  0x80000000
+
+

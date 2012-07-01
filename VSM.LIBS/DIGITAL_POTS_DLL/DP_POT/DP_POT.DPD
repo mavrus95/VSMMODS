@@ -1,0 +1,16 @@
+# Digital Mars IDDE gen.  .dpd file. V: 7200
+dp_pot.obj: \
+	dp_pot.cpp \
+	DP_POT.H \
+	..\..\..\..\..\DM\include\win32\pshpack4.h \
+	..\..\..\..\..\DM\include\win32\pshpack2.h \
+	..\..\..\..\..\DM\include\win32\poppack.h \
+	..\..\..\..\..\DM\include\win32\rpc.h \
+	..\..\..\..\..\DM\include\win32\rpcndr.h \
+	..\..\..\..\..\DM\include\win32\windows.h \
+	..\..\..\..\..\DM\include\win32\ole2.h \
+	..\..\..\..\..\DM\include\win32\wtypes.h \
+	..\..\..\..\..\DM\include\win32\unknwn.h \
+	..\..\..\..\..\DM\include\win32\objidl.h \
+	vsm.hpp \
+	DEVKEYS.H 
