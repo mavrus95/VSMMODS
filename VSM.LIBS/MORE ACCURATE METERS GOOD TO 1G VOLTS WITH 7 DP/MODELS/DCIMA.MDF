@@ -1,0 +1,32 @@
+LISA MODEL DESCRIPTION FORMAT
+=============================
+Design:   <NONE>
+Doc. no.: <NONE>
+Revision: <NONE>
+Author:   <NONE>
+Created:  <NONE>
+Modified: <NONE>
+
+*PROPERTIES,0    
+
+*MAPPINGS,3,SCALAR
+1 : SCALE=1
+2 : SCALE=1000
+3 : SCALE=1000000
+
+*MODELDEFS,0    
+
+*PARTLIST,1    
+IP1,RTIPROBE,RTIPROBE,PRIMITIVE=ANALOG,SCALE=<SCALE>
+
+*NETLIST,2    
++,2
++,GT
+IP1,PS,+
+
+-,2
+-,GT
+IP1,PS,-
+
+*GATES,0    
+
